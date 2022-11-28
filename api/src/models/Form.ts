@@ -344,4 +344,177 @@ export const Form = sequelize.define("forms", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  pregunta_51: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_52: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_53: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_54: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_55: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_56: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_57: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_58: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_59: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_60: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_60_cuales: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_61: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_61_cuales: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_62: {
+    type: DataTypes.INTEGER,
+  },
+  pregunta_63: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_64: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_64_otros: {
+    type: DataTypes.STRING,
+  },
+  pregunta_65: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_66: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_67: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_68_energia: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_68_gas: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_69: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_69_porque: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  pregunta_70_yogurt_medida: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_yogurt_valor: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_kumis_medida: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_kumis_valor: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_cuajada_medida: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_cuajada_valor: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_queso_doble_crema_medida: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_queso_doble_crema_valor: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_queso_campesino_medida: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_queso_campesino_valor: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_leche_medida: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_leche_valor: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_quesos_madurados_medida: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_quesos_madurados_valor: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_requeson_medida: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_requeson_valor: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_arequipe_medida: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_70_arequipe_valor: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  pregunta_71: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  observacion: {
+    type: DataTypes.STRING,
+  },
 });
