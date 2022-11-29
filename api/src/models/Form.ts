@@ -3,10 +3,10 @@ import { DataTypes } from "sequelize";
 
 export const Form = sequelize.define("forms", {
   id: {
-    type: DataTypes.UUID,
+    type: DataTypes.INTEGER,
     primaryKey: true,
+    autoIncrement: true,
     allowNull: false,
-    defaultValue: DataTypes.UUIDV4,
   },
   pregunta_1: {
     type: DataTypes.STRING,
@@ -534,12 +534,20 @@ export const Form = sequelize.define("forms", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  firma_encuestado: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   nombre_encuestador: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   cedula_encuestador: {
     type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  firma_encuestador: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
 });

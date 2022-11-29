@@ -46,5 +46,5 @@ export const deletePdf = async (req: Request, res: Response) => {
     res.status(202).json({ msg: "accepted." });
   } catch (error: any) {
     res.status(400).json({ error: error.message });
-  }
+  };
 };
