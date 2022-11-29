@@ -1,8 +1,30 @@
 import { Formik, Form, Field } from "formik";
+import { useRef, useState } from "react";
+import Popup from "reactjs-popup";
+import SignaturePad from "react-signature-canvas";
+import "reactjs-popup/dist/index.css";
+import "./sigCanvas.css";
 
 export default function FormHome() {
+  const [firmaEncuestado, setFirmaEncuestado] = useState("");
+  const [firmaEncuestador, setFirmaEncuestador] = useState("");
+
   const publicar = (values: any) => {
-    alert(JSON.stringify(values));
+    console.log(JSON.stringify(values));
+  };
+  const encuestado: any = useRef({});
+  const LimpiarEncuestado = () => encuestado.current.clear();
+  const guardarEncuestado = () => {
+    setFirmaEncuestado(
+      encuestado.current.getTrimmedCanvas().toDataURL("image/png")
+    );
+  };
+  const encuestador: any = useRef({});
+  const limpiarEncuestador = () => encuestador.current.clear();
+  const guardarEncuestador = () => {
+    setFirmaEncuestador(
+      encuestador.current.getTrimmedCanvas().toDataURL("image/png")
+    );
   };
 
   return (
@@ -143,8 +165,10 @@ export default function FormHome() {
           observaciones: "",
           nombre_encuestado: "",
           cedula_encuestado: "",
+          firma_encuestado: "",
           nombre_encuestador: "",
           cedula_encuestador: "",
+          firma_encuestador: "",
         }}
         onSubmit={publicar}
       >
@@ -226,13 +250,13 @@ export default function FormHome() {
               <label htmlFor="pregunta_5">5. Información de Contacto: </label>
               <Field
                 type="text"
-                name="pregunta_5"
+                name="pregunta_5_telefono"
                 placeholder="Telefono o celular..."
                 //onChange={formik.handleChange}
               />
               <Field
-                type="text"
-                name="correo"
+                type="email"
+                name="pregunta_5_correo"
                 placeholder="Correo electronico..."
                 //onChange={formik.handleChange}
               />
@@ -331,7 +355,7 @@ export default function FormHome() {
               <label htmlFor="pregunta_11">Otro: </label>
               <Field
                 type="text"
-                name="pregunta_1"
+                name="pregunta_11"
                 placeholder="Cual..."
                 //onChange={formik.handleChange}
               />
@@ -349,7 +373,7 @@ export default function FormHome() {
                 <option value="tanque_frio">Tanque frio</option>
               </Field>
               <label htmlFor="pregunta_12">Otro: </label>
-              <input
+              <Field
                 type="text"
                 name="pregunta_12"
                 placeholder="Cual..."
@@ -1245,6 +1269,7 @@ export default function FormHome() {
             </div>
             <div>
               <label htmlFor="pregunta_38_otro">
+                Otro:
                 <Field
                   type="text"
                   name="pregunta_38_otro"
@@ -1285,6 +1310,7 @@ export default function FormHome() {
             </div>
             <div>
               <label htmlFor="pregunta_40_cuales">
+                Cuales:
                 <Field
                   type="text"
                   name="pregunta_40_cuales"
@@ -1941,8 +1967,56 @@ export default function FormHome() {
               placeholder="Respuesta..."
             />
           </div>
+          <div>
+            <h3>Firma encuestado</h3>
+            <Popup modal trigger={<button type="button">Firma aqui</button>}>
+              <SignaturePad
+                ref={encuestado}
+                canvasProps={{ className: "signatureCanvas" }}
+              />
+              <button type="button" onClick={LimpiarEncuestado}>
+                Limpiar
+              </button>
+              <button type="button" onClick={guardarEncuestado}>
+                Guardar
+              </button>
+            </Popup>
+            <br />
+            <Field
+              type="text"
+              name="firma_encuestado"
+              value={firmaEncuestado}
+              hidden
+            />
+            <img src={firmaEncuestado} alt={firmaEncuestado} />
+          </div>
+          <div>
+            <h3>Firma encuestador</h3>
+            <Popup modal trigger={<button type="button">Firma aqui</button>}>
+              <SignaturePad
+                ref={encuestador}
+                canvasProps={{ className: "signatureCanvas" }}
+              />
+              <button type="button" onClick={limpiarEncuestador}>
+                Limpiar
+              </button>
+              <button type="button" onClick={guardarEncuestador}>
+                Guardar
+              </button>
+            </Popup>
+            <br />
+            <Field
+              type="text"
+              name="firma_encuestador"
+              value={firmaEncuestador}
+              hidden
+            />
+            <img src={firmaEncuestador} alt={firmaEncuestador} />
+          </div>
+          <button type="submit">Crear encuesta</button>
         </Form>
       </Formik>
+      <div></div>
     </div>
   );
 }
