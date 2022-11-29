@@ -16,6 +16,9 @@ export const Form = sequelize.define("forms", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  pregunta_2_otro: {
+    type: DataTypes.STRING,
+  },
   pregunta_3: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -216,15 +219,15 @@ export const Form = sequelize.define("forms", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  pregunta_29_requson_diaria: {
+  pregunta_29_requeson_diaria: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  pregunta_29_requson_semanal: {
+  pregunta_29_requeson_semanal: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  pregunta_29_requson_mensual: {
+  pregunta_29_requeson_mensual: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
@@ -261,13 +264,18 @@ export const Form = sequelize.define("forms", {
   },
   pregunta_34: {
     type: DataTypes.INTEGER,
+    allowNull: false,
   },
   pregunta_35: {
     type: DataTypes.STRING,
+    allowNull: false,
   },
   pregunta_36: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  pregunta_36_otro: {
+    type: DataTypes.STRING,
   },
   pregunta_37: {
     type: DataTypes.STRING,
@@ -398,6 +406,7 @@ export const Form = sequelize.define("forms", {
   },
   pregunta_62: {
     type: DataTypes.INTEGER,
+    allowNull: false,
   },
   pregunta_63: {
     type: DataTypes.STRING,
@@ -510,11 +519,27 @@ export const Form = sequelize.define("forms", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  pregunta_71: {
+  pregunta_70_otros: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  observacion: {
+  observaciones: {
     type: DataTypes.STRING,
+  },
+  nombre_encuestado: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  cedula_encuestado: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  nombre_encuestador: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  cedula_encuestador: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
   },
 });

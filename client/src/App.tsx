@@ -1,11 +1,10 @@
-import React from "react";
-import Form from "./components/Pages/Form/Form";
+import FormHome from "./components/Pages/formHome/FormHome";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Form />
+      <FormHome />
     </div>
   );
 }
