@@ -1,4 +1,4 @@
-import FormHome from "./components/Pages/formHome/FormHome";
+import FormHome from "./components/formHome/FormHome";
 import "./App.css";
 
 function App() {

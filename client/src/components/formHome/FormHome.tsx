@@ -2,15 +2,17 @@ import { Formik, Form, Field } from "formik";
 import { useRef, useState } from "react";
 import Popup from "reactjs-popup";
 import SignaturePad from "react-signature-canvas";
+import { postForm } from "../../connection/postForm";
 import "reactjs-popup/dist/index.css";
-import "./sigCanvas.css";
+import "./FormHome.css";
 
 export default function FormHome() {
   const [firmaEncuestado, setFirmaEncuestado] = useState("");
   const [firmaEncuestador, setFirmaEncuestador] = useState("");
 
-  const publicar = (values: any) => {
-    console.log(JSON.stringify(values));
+  const publicar = async (values: any) => {
+    console.log(values);
+    await postForm(values);
   };
   const encuestado: any = useRef({});
   const LimpiarEncuestado = () => encuestado.current.clear();
@@ -1983,10 +1985,9 @@ export default function FormHome() {
             </Popup>
             <br />
             <Field
-              type="text"
+              type="checkbox"
               name="firma_encuestado"
               value={firmaEncuestado}
-              hidden
             />
             <img src={firmaEncuestado} alt={firmaEncuestado} />
           </div>
@@ -2006,17 +2007,15 @@ export default function FormHome() {
             </Popup>
             <br />
             <Field
-              type="text"
+              type="checkbox"
               name="firma_encuestador"
               value={firmaEncuestador}
-              hidden
             />
             <img src={firmaEncuestador} alt={firmaEncuestador} />
           </div>
-          <button type="submit">Crear encuesta</button>
+          <button type="submit">Crear encuesta </button>
         </Form>
       </Formik>
-      <div></div>
     </div>
   );
 }
