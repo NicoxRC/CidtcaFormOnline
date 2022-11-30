@@ -20,7 +20,7 @@ export const Form = sequelize.define("forms", {
     type: DataTypes.STRING,
   },
   pregunta_3: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
   pregunta_4: {
@@ -28,7 +28,7 @@ export const Form = sequelize.define("forms", {
     allowNull: false,
   },
   pregunta_5_telefono: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_5_correo: {
@@ -68,7 +68,7 @@ export const Form = sequelize.define("forms", {
     allowNull: false,
   },
   pregunta_14: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_15: {
@@ -116,7 +116,7 @@ export const Form = sequelize.define("forms", {
     allowNull: false,
   },
   pregunta_26: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
   pregunta_27: {
@@ -124,138 +124,138 @@ export const Form = sequelize.define("forms", {
     allowNull: false,
   },
   pregunta_28_diaria: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_28_semanal: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_28_mensual: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_yogurt_diaria: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_yogurt_semanal: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_yogurt_mensual: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_kumis_diaria: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_kumis_semanal: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_kumis_mensual: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_cuajada_diaria: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_cuajada_semanal: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_cuajada_mensual: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_queso_doble_crema_diaria: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_queso_doble_crema_semanal: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_queso_doble_crema_mensual: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_queso_campesino_diaria: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_queso_campesino_semanal: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_queso_campesino_mensual: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_leche_diaria: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_leche_semanal: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_leche_mensual: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_quesos_madurados_diaria: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_quesos_madurados_semanal: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_quesos_madurados_mensual: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_requeson_diaria: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_requeson_semanal: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_requeson_mensual: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_arequipe_diaria: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_arequipe_semanal: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_arequipe_mensual: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_29_otros: {
     type: DataTypes.STRING,
   },
   pregunta_30: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_31: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_32: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_33: {
@@ -263,7 +263,7 @@ export const Form = sequelize.define("forms", {
     allowNull: false,
   },
   pregunta_34: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_35: {
@@ -278,14 +278,14 @@ export const Form = sequelize.define("forms", {
     type: DataTypes.STRING,
   },
   pregunta_37: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
   pregunta_37_otro: {
     type: DataTypes.STRING,
   },
   pregunta_38: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
   pregunta_38_otro: {
@@ -405,7 +405,7 @@ export const Form = sequelize.define("forms", {
     allowNull: false,
   },
   pregunta_62: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_63: {
@@ -424,7 +424,7 @@ export const Form = sequelize.define("forms", {
     allowNull: false,
   },
   pregunta_66: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_67: {
@@ -432,11 +432,11 @@ export const Form = sequelize.define("forms", {
     allowNull: false,
   },
   pregunta_68_energia: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_68_gas: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_69: {
@@ -448,75 +448,75 @@ export const Form = sequelize.define("forms", {
     allowNull: false,
   },
   pregunta_70_yogurt_medida: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_yogurt_valor: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_kumis_medida: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_kumis_valor: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_cuajada_medida: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_cuajada_valor: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_queso_doble_crema_medida: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_queso_doble_crema_valor: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_queso_campesino_medida: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_queso_campesino_valor: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_leche_medida: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_leche_valor: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_quesos_madurados_medida: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_quesos_madurados_valor: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_requeson_medida: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_requeson_valor: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_arequipe_medida: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_arequipe_valor: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   pregunta_70_otros: {
@@ -531,11 +531,11 @@ export const Form = sequelize.define("forms", {
     allowNull: false,
   },
   cedula_encuestado: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   firma_encuestado: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.JSON),
     allowNull: false,
   },
   nombre_encuestador: {
@@ -543,11 +543,11 @@ export const Form = sequelize.define("forms", {
     allowNull: false,
   },
   cedula_encuestador: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   firma_encuestador: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.JSON),
     allowNull: false,
   },
 });

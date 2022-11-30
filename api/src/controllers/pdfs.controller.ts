@@ -13,7 +13,6 @@ export const getPdfs = async (req: Request, res: Response) => {
 export const createPdfs = async (req: Request, res: Response) => {
   try {
     const { name, pdf } = req.body;
-    if (!name || !pdf) throw new Error("Bad request.");
 
     const newPdf = await Pdf.create({
       name,
