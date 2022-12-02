@@ -1968,8 +1968,8 @@ export default function FormHome() {
               </label>
               <Field
                 component="select"
-                name="pregunta_60"
-                id="pregunta_60"
+                name="pregunta_61"
+                id="pregunta_61"
                 className="form-control"
               >
                 <option value="default" hidden>
