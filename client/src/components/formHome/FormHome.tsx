@@ -1,5 +1,6 @@
 import { Formik, Form, Field } from "formik";
 import { useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Popup from "reactjs-popup";
 import SignaturePad from "react-signature-canvas";
 import { postForm } from "../../connection/postForm";
@@ -10,10 +11,11 @@ import "./FormHome.css";
 export default function FormHome() {
   const [firmaEncuestado, setFirmaEncuestado] = useState("");
   const [firmaEncuestador, setFirmaEncuestador] = useState("");
+  const history = useHistory();
 
   const publicar = async (values: any) => {
-    console.log(values);
     await postForm(values);
+    history.push("/");
   };
   const encuestado: any = useRef({});
   const LimpiarEncuestado = () => encuestado.current.clear();
@@ -39,25 +41,33 @@ export default function FormHome() {
           pregunta_2_otro: "",
           pregunta_3: [],
           pregunta_4: "",
-          pregunta_5_telefono: "",
-          pregunta_5_correo: "",
+          pregunta_5: "",
           pregunta_6: "",
           pregunta_7: "",
           pregunta_8: "",
           pregunta_9: "",
+          pregunta_9_otro: "",
           pregunta_10: "",
+          pregunta_10_otro: "",
           pregunta_11: "",
+          pregunta_11_otro: "",
           pregunta_12: "",
+          pregunta_12_otro: "",
           pregunta_13: "",
           pregunta_14: "",
           pregunta_15: "",
           pregunta_16: "",
+          pregunta_16_cuantos: "",
           pregunta_17: "",
+          pregunta_17_cuantos: "",
           pregunta_18: "",
+          pregunta_18_cuantos: "",
           pregunta_19: "",
           pregunta_20: "",
           pregunta_21: "",
+          pregunta_21_porcentaje: "",
           pregunta_22: "",
+          pregunta_22_porcentaje: "",
           pregunta_23: "",
           pregunta_24: "",
           pregunta_25: "",
@@ -101,26 +111,27 @@ export default function FormHome() {
           pregunta_34: "",
           pregunta_35: "",
           pregunta_36: "",
-          pregunta_36_otro: "",
-          pregunta_37: [],
+          pregunta_37: "",
           pregunta_37_otro: "",
-          pregunta_38: "",
+          pregunta_38: [],
           pregunta_38_otro: "",
-          pregunta_39: "",
+          pregunta_39: [],
+          pregunta_39_otro: "",
           pregunta_40: "",
           pregunta_40_cuales: "",
           pregunta_41: "",
           pregunta_42: "",
           pregunta_43: "",
+          pregunta_43_cuales: "",
           pregunta_44: "",
-          pregunta_44_cuales: "",
+          pregunta_44_como: "",
           pregunta_45: "",
           pregunta_45_como: "",
           pregunta_46: "",
-          pregunta_46_como: "",
           pregunta_47: "",
           pregunta_48: "",
-          pregunta_49: "",
+          pregunta_48_cual: "",
+          pregunta_49: [],
           pregunta_50: "",
           pregunta_51: "",
           pregunta_52: "",
@@ -128,50 +139,47 @@ export default function FormHome() {
           pregunta_54: "",
           pregunta_55: "",
           pregunta_56: "",
+          pregunta_56_cuales: "",
           pregunta_57: "",
+          pregunta_57_cuales: "",
           pregunta_58: "",
           pregunta_59: "",
-          pregunta_60: "",
-          pregunta_60_cuales: "",
+          pregunta_60: [],
+          pregunta_60_otros: "",
           pregunta_61: "",
-          pregunta_61_cuales: "",
           pregunta_62: "",
           pregunta_63: "",
-          pregunta_64: "",
-          pregunta_64_otros: "",
+          pregunta_64_energia: "",
+          pregunta_64_gas: "",
           pregunta_65: "",
-          pregunta_66: "",
-          pregunta_67: "",
-          pregunta_68_energia: "",
-          pregunta_68_gas: "",
-          pregunta_69: "",
-          pregunta_69_porque: "",
-          pregunta_70_yogurt_medida: "",
-          pregunta_70_yogurt_valor: "",
-          pregunta_70_kumis_medida: "",
-          pregunta_70_kumis_valor: "",
-          pregunta_70_cuajada_medida: "",
-          pregunta_70_cuajada_valor: "",
-          pregunta_70_queso_doble_crema_medida: "",
-          pregunta_70_queso_doble_crema_valor: "",
-          pregunta_70_queso_campesino_medida: "",
-          pregunta_70_queso_campesino_valor: "",
-          pregunta_70_leche_medida: "",
-          pregunta_70_leche_valor: "",
-          pregunta_70_quesos_madurados_medida: "",
-          pregunta_70_quesos_madurados_valor: "",
-          pregunta_70_requeson_medida: "",
-          pregunta_70_requeson_valor: "",
-          pregunta_70_arequipe_medida: "",
-          pregunta_70_arequipe_valor: "",
-          pregunta_70_otros: "",
+          pregunta_65_porque: "",
+          pregunta_66_yogurt_medida: "",
+          pregunta_66_yogurt_valor: "",
+          pregunta_66_kumis_medida: "",
+          pregunta_66_kumis_valor: "",
+          pregunta_66_cuajada_medida: "",
+          pregunta_66_cuajada_valor: "",
+          pregunta_66_queso_doble_crema_medida: "",
+          pregunta_66_queso_doble_crema_valor: "",
+          pregunta_66_queso_campesino_medida: "",
+          pregunta_66_queso_campesino_valor: "",
+          pregunta_66_leche_medida: "",
+          pregunta_66_leche_valor: "",
+          pregunta_66_quesos_madurados_medida: "",
+          pregunta_66_quesos_madurados_valor: "",
+          pregunta_66_requeson_medida: "",
+          pregunta_66_requeson_valor: "",
+          pregunta_66_arequipe_medida: "",
+          pregunta_66_arequipe_valor: "",
+          pregunta_66_otros: "",
           observaciones: "",
+          fecha: "",
           nombre_encuestado: "",
           cedula_encuestado: "",
-          firma_encuestado: "",
+          firma_encuestado: [],
           nombre_encuestador: "",
           cedula_encuestador: "",
-          firma_encuestador: "",
+          firma_encuestador: [],
         }}
         onSubmit={publicar}
       >
@@ -188,11 +196,9 @@ export default function FormHome() {
                 name="pregunta_1"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Personeria...
-                </option>
-                <option value="juridica">Juridica</option>
-                <option value="natural">Natural</option>
+                <option hidden>Respuesta...</option>
+                <option value="Juridica">Juridica</option>
+                <option value="Natural">Natural</option>
               </Field>
             </div>
             <div className="mb-3">
@@ -205,12 +211,10 @@ export default function FormHome() {
                 name="pregunta_2"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Organizacion...
-                </option>
-                <option value="cooperativa">Cooperativa</option>
-                <option value="asociacion">Asociacion</option>
-                <option value="sas">SAS</option>
+                <option hidden>Respuesta...</option>
+                <option value="Cooperativa">Cooperativa</option>
+                <option value="Asociacion">Asociacion</option>
+                <option value="SAS">SAS</option>
               </Field>
               <label htmlFor="pregunta_2_otro" className="form-label">
                 Otro:{" "}
@@ -231,7 +235,7 @@ export default function FormHome() {
               <Field
                 type="checkbox"
                 name="pregunta_3"
-                value="camara_de_comercio"
+                value="camara de comercio"
               />
               <label htmlFor="pregunta_3" className="form-label">
                 Camara de comercio
@@ -239,7 +243,7 @@ export default function FormHome() {
               <Field
                 type="checkbox"
                 name="pregunta_3"
-                value="registro_sanitario"
+                value="registro sanitario"
               />
               <label htmlFor="pregunta_3" className="form-label">
                 Registro sanitario
@@ -247,7 +251,7 @@ export default function FormHome() {
               <Field
                 type="checkbox"
                 name="pregunta_3"
-                value="concepto_sanitario"
+                value="concepto sanitario"
               />
               <label htmlFor="pregunta_3" className="form-label">
                 Concepto sanitario
@@ -274,14 +278,8 @@ export default function FormHome() {
               </label>
               <Field
                 type="text"
-                name="pregunta_5_telefono"
-                placeholder="Telefono o celular..."
-                className="form-control"
-              />
-              <Field
-                type="email"
-                name="pregunta_5_correo"
-                placeholder="Correo electronico..."
+                name="pregunta_5"
+                placeholder="Respuesta..."
                 className="form-control"
               />
             </div>
@@ -295,21 +293,21 @@ export default function FormHome() {
                 name="pregunta_6"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Actividad principal...{" "}
+                <option hidden>Respuesta</option>
+                <option value="Transformacion">Transformacion</option>
+                <option value="Acopio y venta de leche">
+                  Acopio y venta de leche{" "}
                 </option>
-                <option value="transformacion">Transformacion</option>
-                <option value="acopio">Acopio</option>
               </Field>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_7" className="form-label">
-                7. Ubicación:{" "}
+                7. Municipio:{" "}
               </label>
               <Field
                 type="text"
                 name="pregunta_7"
-                placeholder="Ubicacion..."
+                placeholder="Respuesta..."
                 className="form-control"
               />
             </div>
@@ -323,11 +321,9 @@ export default function FormHome() {
                 id="pregunta_8"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Aporte al fondo nacional del ganado
-                </option>
-                <option value="si">Si</option>
-                <option value="no">No</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
           </div>
@@ -343,31 +339,31 @@ export default function FormHome() {
                 id="pregunta_9"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  metodos de acopio de leche
+                <option hidden>Respuesta</option>
+                <option value="Se reibe en planta/centro de acopio">
+                  Se reibe en planta/centro de acopio
                 </option>
-                <option value="planta_transformacion">
-                  Se la llevan hasta la planta de transformación
-                </option>
-                <option value="centro_acopio">
+                <option value="La recoge en el centro de acopio">
                   La recoge en el centro de acopio
                 </option>
-                <option value="propia_leche">Produce su propia leche</option>
+                <option value="Recibe al productor en finca">
+                  Recibe al productor en finca
+                </option>
               </Field>
-              <label htmlFor="pregunta_9" className="form-label">
+              <label htmlFor="pregunta_9_otro" className="form-label">
                 Otro:{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_9"
-                placeholder="Cual..."
+                name="pregunta_9_otro"
+                placeholder="Respuesta..."
                 className="form-control"
               />
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_10" className="form-label">
-                10. ¿De qué manera sus proveedores transportan la leche hasta la
-                planta o centro de acopio?{" "}
+                10. ¿De qué manera se transporta la leche hasta la planta/centro
+                de acopio?
               </label>
               <Field
                 component="select"
@@ -375,24 +371,24 @@ export default function FormHome() {
                 id="pregunta_10"
                 className="form-control"
               >
-                <option value="default" hidden></option>
-                <option value="termo_king">Termo King</option>
-                <option value="carro_particular">Carro Particular</option>
+                <option hidden>Respuesta</option>
+                <option value="Termo King">Termo King</option>
+                <option value="Carro Particular">Carro Particular</option>
                 <option value="Moto">Moto</option>
                 <option value="Caballo">Caballo</option>
               </Field>
-              <label htmlFor="pregunta_10" className="form-label">
+              <label htmlFor="pregunta_10_otro" className="form-label">
                 Otro:{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_10"
-                placeholder="Cual..."
+                name="pregunta_10_otro"
+                placeholder="Respuesta..."
                 className="form-control"
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="pregunta_10" className="form-label">
+              <label htmlFor="pregunta_11" className="form-label">
                 11. ¿De qué manera Transporta la leche desde plataforma a areas
                 de proceso?
               </label>
@@ -402,20 +398,20 @@ export default function FormHome() {
                 id="pregunta_11"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
+                <option hidden>Respuesta</option>
+                <option value="Cantinas de aluminio">
+                  Cantinas de aluminio
                 </option>
-                <option value="cantinas_aluminio">Cantinas de aluminio</option>
-                <option value="tanques_plasticos">Tanques plasticos</option>
-                <option value="motobomba">Motobomba</option>
+                <option value="Tanques plasticos">Tanques plasticos</option>
+                <option value="Motobomba">Motobomba</option>
               </Field>
-              <label htmlFor="pregunta_11" className="form-label">
+              <label htmlFor="pregunta_11_otro" className="form-label">
                 Otro:{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_11"
-                placeholder="Cual..."
+                name="pregunta_11_otro"
+                placeholder="Respuesta..."
                 className="form-control"
               />
             </div>
@@ -429,20 +425,20 @@ export default function FormHome() {
                 id="pregunta_12"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
+                <option hidden>Respuesta</option>
+                <option value="Pasa directo a proceso">
+                  Pasa directo a proceso
                 </option>
-                <option value="cantina_pileta">Cantina/pileta</option>
-                <option value="tanque">Tanque</option>
-                <option value="tanque_frio">Tanque frio</option>
+                <option value="Tanque temporal">Tanque temporal</option>
+                <option value="Tanque frio">Tanque frio</option>
               </Field>
-              <label htmlFor="pregunta_12" className="form-label">
+              <label htmlFor="pregunta_12_otro" className="form-label">
                 Otro:{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_12"
-                placeholder="Cual..."
+                name="pregunta_12_otro"
+                placeholder="Respuesta..."
                 className="form-control"
               />
             </div>
@@ -458,11 +454,9 @@ export default function FormHome() {
                   id="pregunta_13"
                   className="form-control"
                 >
-                  <option value="default" hidden>
-                    Respuesta
-                  </option>
-                  <option value="asociados">asociados</option>
-                  <option value="externos">Externos</option>
+                  <option hidden>Respuesta</option>
+                  <option value="Asociados">Asociados</option>
+                  <option value="Externos">Externos</option>
                 </Field>
               </div>
               <div className="mb-3">
@@ -499,18 +493,25 @@ export default function FormHome() {
                   id="pregunta_16"
                   className="form-control"
                 >
-                  <option value="default" hidden>
-                    Respuesta
-                  </option>
-                  <option value="si">Si</option>
-                  <option value="no">No</option>
-                  <option value="no_sabe">No sabe/no responde</option>
+                  <option hidden>Respuesta:</option>
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                  <option value="No sabe">No sabe</option>
                 </Field>
+                <label htmlFor="regunta_16_cuantos">
+                  Cuantos
+                  <Field
+                    type="text"
+                    name="pregunta_16_cuantos"
+                    placeholder="Respuesta..."
+                    className="form-control"
+                  />
+                </label>
               </div>
               <div className="mb-3">
                 <label htmlFor="pregunta_17" className="form-label">
-                  17. ¿Sus proveedores cuentan con certificado de Buenas
-                  Prácticas de Manufactura BPM?
+                  17. ¿Si su proveedor es un centro de acopio, cuentan con
+                  certificado de Buenas Prácticas de Manufactura BPM?
                 </label>
                 <Field
                   component="select"
@@ -518,13 +519,20 @@ export default function FormHome() {
                   id="pregunta_17"
                   className="form-control"
                 >
-                  <option value="default" hidden>
-                    Respuesta
-                  </option>
-                  <option value="si">Si</option>
-                  <option value="no">No</option>
-                  <option value="no_sabe">No sabe/no responde</option>
+                  <option hidden>Respuesta</option>
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                  <option value="No sabe">No sabe</option>
                 </Field>
+                <label htmlFor="regunta_17_cuantos">
+                  Cuantos:
+                  <Field
+                    type="text"
+                    name="pregunta_17_cuantos"
+                    placeholder="Respuesta..."
+                    className="form-control"
+                  />
+                </label>
               </div>
               <div className="mb-3">
                 <label htmlFor="pregunta_18" className="form-label">
@@ -537,13 +545,20 @@ export default function FormHome() {
                   id="pregunta_18"
                   className="form-control"
                 >
-                  <option value="default" hidden>
-                    Respuesta
-                  </option>
-                  <option value="si">Si</option>
-                  <option value="no">No</option>
-                  <option value="no_sabe">No sabe/no responde</option>
+                  <option hidden>Respuesta</option>
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                  <option value="No sabe">No sabe</option>
                 </Field>
+                <label htmlFor="regunta_18_cuantos">
+                  Cuantos:
+                  <Field
+                    type="text"
+                    name="pregunta_18_cuantos"
+                    placeholder="Respuesta..."
+                    className="form-control"
+                  />
+                </label>
               </div>
             </div>
           </div>
@@ -562,17 +577,15 @@ export default function FormHome() {
                 id="pregunta_19"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Repuesta
-                </option>
-                <option value="si">Si</option>
-                <option value="no">No</option>
+                <option hidden>Repuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_20" className="form-label">
-                20. ¿Dónde se ubica su planta de proceso y/o acopio (Municipio,
-                vereda, direccion y coordenadas)
+                20. ¿Dónde se ubica su planta de proceso y/o acopio (vereda,
+                direccion )
               </label>
               <Field
                 type="text"
@@ -583,9 +596,8 @@ export default function FormHome() {
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_21" className="form-label">
-                21. En lo que respecta a vías y zonas de transporte, evalue el
-                acceso que tiene como productor para transportar insumos hasta
-                la planta
+                21. En lo que respecta a vías, que tipo de acceso predomina para
+                el transporte de leche a la planta
               </label>
               <Field
                 component="select"
@@ -593,20 +605,28 @@ export default function FormHome() {
                 id="pregunta_21"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
+                <option hidden>Respuesta</option>
+                <option value="Pavimentada">Pavimentada</option>
+                <option value="Placa huella">Placa huella</option>
+                <option value="Via carreteable">
+                  Via carreteable (destapada)
                 </option>
-                <option value="acceso_dificil">Acceso dificil</option>
-                <option value="acceso_regular">Acceso regular</option>
-                <option value="acceso_bueno">Acceso bueno</option>
-                <option value="acceso_excelente">Acceso excelente</option>
+                <option value="Trocha - a pie">Trocha - a pie</option>
               </Field>
+              <label htmlFor="pregunta_21_porcentaje" className="form-label">
+                Porcentaje:
+                <Field
+                  type="text"
+                  name="pregunta_21_porcentaje"
+                  placeholder="Respuesta..."
+                  className="form-control"
+                />
+              </label>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_22" className="form-label">
-                22. En lo que respecta a vías y zonas de transporte, evalue el
-                acceso que tiene como productor para llevar sus productos al
-                mercado
+                22. En lo que respecta a vías, que tipo de acceso predomina para
+                comercializar sus productos
               </label>
               <Field
                 component="select"
@@ -614,14 +634,23 @@ export default function FormHome() {
                 id="pregunta_22"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
+                <option hidden>Respuesta</option>
+                <option value="Pavimentada">Pavimentada</option>
+                <option value="Placa huella">Placa huella</option>
+                <option value="Via carreteable">
+                  Via carreteable (destapada)
                 </option>
-                <option value="acceso_dificil">Acceso dificil</option>
-                <option value="acceso_regular">Acceso regular</option>
-                <option value="acceso_bueno">Acceso bueno</option>
-                <option value="acceso_excelente">Acceso excelente</option>
+                <option value="Trocha - a pie">Trocha - a pie</option>
               </Field>
+              <label htmlFor="pregunta_22_porcentaje" className="form-label">
+                Porcentaje:
+                <Field
+                  type="text"
+                  name="pregunta_22_porcentaje"
+                  placeholder="Respuesta..."
+                  className="form-control"
+                />
+              </label>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_23" className="form-label">
@@ -659,25 +688,23 @@ export default function FormHome() {
                 name="pregunta_25"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">Si</option>
-                <option value="no">No</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_26" className="form-label">
-                26. ¿Qué tipo de derivados lácteos produce?
+                26. ¿Qué tipo de productos lácteos elabora?
               </label>
-              <Field type="checkbox" name="pregunta_26" value="cuajada" />
+              <Field type="checkbox" name="pregunta_26" value="Cuajada" />
               <label htmlFor="pregunta_26">Cuajada</label>
-              <Field type="checkbox" name="pregunta_26" value="yogurt" />
+              <Field type="checkbox" name="pregunta_26" value="Yogurt" />
               <label htmlFor="pregunta_26">Yogurt</label>
               <Field
                 type="checkbox"
                 name="pregunta_26"
-                value="queso_doble_crema"
+                value="Queso doble crema"
               />
               <label htmlFor="pregunta_26" className="form-label">
                 Queso doble crema
@@ -685,23 +712,23 @@ export default function FormHome() {
               <Field
                 type="checkbox"
                 name="pregunta_26"
-                value="quesos_madurados"
+                value="Quesos madurados"
               />
               <label htmlFor="pregunta_26" className="form-label">
                 Quesos madurados
               </label>
-              <Field type="checkbox" name="pregunta_26" value="kumis" />
+              <Field type="checkbox" name="pregunta_26" value="Kumis" />
               <label htmlFor="pregunta_26" className="form-label">
                 Kumis
               </label>
-              <Field type="checkbox" name="pregunta_26" value="requeson" />
+              <Field type="checkbox" name="pregunta_26" value="Requeson" />
               <label htmlFor="pregunta_26" className="form-label">
                 Requeson
               </label>
               <Field
                 type="checkbox"
                 name="pregunta_26"
-                value="queso_mozzarella"
+                value="Queso mozzarella"
               />
               <label htmlFor="pregunta_26" className="form-label">
                 Queso mozzarella
@@ -709,25 +736,15 @@ export default function FormHome() {
               <Field
                 type="checkbox"
                 name="pregunta_26"
-                value="queso_campesino"
+                value="Queso_campesino"
               />
               <label htmlFor="pregunta_26" className="form-label">
                 Queso campesino
               </label>
-              <Field type="checkbox" name="pregunta_26" value="arequipe" />
+              <Field type="checkbox" name="pregunta_26" value="Arequipe" />
               <label htmlFor="pregunta_26" className="form-label">
                 Arequipe
               </label>
-              <br />
-              <label htmlFor="pregunta_26" className="form-label">
-                Otro:{" "}
-              </label>
-              <Field
-                type="text"
-                name="pregunta_26"
-                placeholder="Cual..."
-                className="form-control"
-              />
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_27" className="form-label">
@@ -1157,8 +1174,8 @@ export default function FormHome() {
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_31" className="form-label">
-                31. ¿Cuál es el número de personal fijo y operacional que
-                trabaja en la planta y/o centro acopio?
+                31. ¿Cuál es el número de personal fijo que trabaja en la planta
+                y/o centro acopio?
               </label>
               <Field
                 type="text"
@@ -1169,9 +1186,8 @@ export default function FormHome() {
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_32" className="form-label">
-                32. ¿Cuantas familias se ven favorecidas por la planta de
-                procesamiento o centro de acopio, la venta y la elaboración de
-                productos derivados de leche?
+                32. ¿Cuál es el número de personal fijo y oCASIONALES que
+                trabaja en la planta y/o centro acopio?
               </label>
               <Field
                 type="text"
@@ -1182,43 +1198,54 @@ export default function FormHome() {
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_33" className="form-label">
-                33. ¿Pertenece a algún grupo, asociación, organismo o queseros
-                reconocido de segundo nivel?
-              </label>
-              <Field
-                component="select"
-                name="pregunta_33"
-                id="pregunta_33"
-                className="form-control"
-              >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">Si</option>
-                <option value="no">No</option>
-              </Field>
-            </div>
-            <div className="mb-3">
-              <label htmlFor="pregunta_34" className="form-label">
-                34. Si su respuesta anterior es afirmativa, responda las
-                siguientes preguntas, ¿ Conoce cuantas organizaiones ademas de
-                la suya pertenecen al grupo, asociación u organismo de segundo
-                nivel?
+                33. ¿Cuantas familias se ven favorecidas por la planta de
+                procesamiento o centro de acopio, la venta y la elaboración de
+                productos derivados de leche?
               </label>
               <Field
                 type="text"
-                name="pregunta_34"
+                name="pregunta_33"
                 placeholder="Respuesta..."
                 className="form-control"
               />
             </div>
             <div className="mb-3">
+              <label htmlFor="pregunta_34" className="form-label">
+                34. ¿Pertenece a algún grupo, asociación, organismo o queseros
+                reconocido de segundo nivel?
+              </label>
+              <Field
+                component="select"
+                name="pregunta_34"
+                id="pregunta_34"
+                className="form-control"
+              >
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+              </Field>
+            </div>
+            <div className="mb-3">
               <label htmlFor="pregunta_35" className="form-label">
-                35. Cual es el nombre del grupo, asociación o organismo
+                35. Si su respuesta anterior es afirmativa, responda las
+                siguientes preguntas, ¿ Conoce cuantas organizaiones ademas de
+                la suya pertenecen al grupo, asociación u organismo de segundo
+                nivel? nivel?
               </label>
               <Field
                 type="text"
                 name="pregunta_35"
+                placeholder="Respuesta..."
+                className="form-control"
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="pregunta_36" className="form-label">
+                36. Cual es el nombre del grupo, asociación o organismo
+              </label>
+              <Field
+                type="text"
+                name="pregunta_36"
                 placeholder="Respuesta"
                 className="form-control"
               />
@@ -1230,135 +1257,20 @@ export default function FormHome() {
               EN LA PLANTA DE TRANSFORMACION
             </h1>
             <div className="mb-3">
-              <label htmlFor="pregunta_36" className="form-label">
-                36. ¿Qué tipo de tenencia tiene sobre el predio donde desarrolla
+              <label htmlFor="pregunta_37" className="form-label">
+                37. ¿Qué tipo de tenencia tiene sobre el predio donde desarrolla
                 la actividad económica?
               </label>
               <Field
                 component="select"
-                name="pregunta_36"
-                id="pregunta_36"
+                name="pregunta_37"
+                id="pregunta_37"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="propio">Propio</option>
-                <option value="arrendado">Arrendado</option>
+                <option hidden>Respuesta</option>
+                <option value="Propio">Propio</option>
+                <option value="Arrendado">Arrendado</option>
               </Field>
-              <label htmlFor="pregunta_36_otro" className="form-label">
-                Otro{" "}
-              </label>
-              <Field
-                type="text"
-                name="pregunta_36_otro"
-                placeholder="Respuesta..."
-                className="form-control"
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="pregunta_37" className="form-label">
-                37. seleccione las zonas de la planta de producción con las que
-                cuenta.
-              </label>
-              <label htmlFor="pregunta_37" className="form-label">
-                <Field
-                  type="checkbox"
-                  name="pregunta_37"
-                  value="zona_de_recepcion_de_producto"
-                />
-                Zona de recepcion de producto
-              </label>
-              <label htmlFor="pregunta_37" className="form-label">
-                <Field
-                  type="checkbox"
-                  name="pregunta_37"
-                  value="zona_de_procesamiento"
-                />
-                Zona de procesamiento
-              </label>
-              <label htmlFor="pregunta_37" className="form-label">
-                <Field
-                  type="checkbox"
-                  name="pregunta_37"
-                  value="zona_de_pesaje_y_empaque"
-                />
-                Zona de pesaje y empaque
-              </label>
-              <label htmlFor="pregunta_37" className="form-label">
-                <Field
-                  type="checkbox"
-                  name="pregunta_37"
-                  value="zona_de_descanso_y_cafetería"
-                />
-                Zona de descanso y cafetería
-              </label>
-              <label htmlFor="pregunta_37" className="form-label">
-                <Field
-                  type="checkbox"
-                  name="pregunta_37"
-                  value="zona_de_muestreo_y_pruebas_de laboratorio"
-                />
-                Zona de muestreo y pruebas de laboratorio
-              </label>
-              <label htmlFor="pregunta_37" className="form-label">
-                <Field
-                  type="checkbox"
-                  name="pregunta_37"
-                  value="zona_de_bodega_e_insumos"
-                />
-                Zona de bodega e insumos
-              </label>
-              <label htmlFor="pregunta_37" className="form-label">
-                <Field
-                  type="checkbox"
-                  name="pregunta_37"
-                  value="zona_de_cuartos_frios"
-                />
-                Zona de cuartos frios
-              </label>
-              <label htmlFor="pregunta_37" className="form-label">
-                <Field
-                  type="checkbox"
-                  name="pregunta_37"
-                  value="salas_de_espera"
-                />
-                Salas de espera
-              </label>
-              <label htmlFor="pregunta_37" className="form-label">
-                <Field
-                  type="checkbox"
-                  name="pregunta_37"
-                  value="zona_de_pasteurización"
-                />
-                Zona de pasteurización
-              </label>
-              <label htmlFor="pregunta_37" className="form-label">
-                <Field
-                  type="checkbox"
-                  name="pregunta_37"
-                  value="zona_de_herramientas"
-                />
-                Zona de herramientas
-              </label>
-              <label htmlFor="pregunta_37" className="form-label">
-                <Field
-                  type="checkbox"
-                  name="pregunta_37"
-                  value="oficinas_administrativas"
-                />
-                Oficinas administrativas
-              </label>
-              <label htmlFor="pregunta_37" className="form-label">
-                <Field
-                  type="checkbox"
-                  name="pregunta_37"
-                  value="zona_de_tratamiento_de_residuos"
-                />
-                Zona de tratamiento de residuos
-              </label>
-            </div>
-            <div className="mb-3">
               <label htmlFor="pregunta_37_otro" className="form-label">
                 Otro{" "}
               </label>
@@ -1371,131 +1283,244 @@ export default function FormHome() {
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_38" className="form-label">
-                38. Seleccione la maquinaria con la que cuenta.
+                38. seleccione las zonas de la planta de producción con las que
+                cuenta.
               </label>
-              <label htmlFor="pregutna_38" className="form-label">
-                <Field type="checkbox" name="pregunta_38" value="marmita" />
-                Marmita
-              </label>
-              <label htmlFor="pregutna_38" className="form-label">
+              <label htmlFor="pregunta_38" className="form-label">
                 <Field
                   type="checkbox"
                   name="pregunta_38"
-                  value="cubas_de_cuajar"
+                  value="zona de recepcion de producto"
                 />
-                Cubas de cuajar
+                Zona de recepcion de producto
               </label>
-              <label htmlFor="pregutna_38" className="form-label">
+              <label htmlFor="pregunta_38" className="form-label">
                 <Field
                   type="checkbox"
                   name="pregunta_38"
-                  value="lavadoras_de_queso"
+                  value="zona de procesamiento"
                 />
-                Lavadoras de queso
+                Zona de procesamiento
               </label>
-              <label htmlFor="pregutna_38" className="form-label">
-                <Field type="checkbox" name="pregunta_38" value="moldes" />
-                Moldes
-              </label>
-              <label htmlFor="pregutna_38" className="form-label">
+              <label htmlFor="pregunta_38" className="form-label">
                 <Field
                   type="checkbox"
                   name="pregunta_38"
-                  value="mesas_en_acero_inoxidable_para_queso"
+                  value="zona de pesaje y empaque"
                 />
-                Mesas en acero inoxidable para queso
+                Zona de pesaje y empaque
               </label>
-              <label htmlFor="pregutna_38" className="form-label">
-                <Field type="checkbox" name="pregunta_38" value="prensas" />
-                Prensas
-              </label>
-              <label htmlFor="pregutna_38" className="form-label">
-                <Field type="checkbox" name="pregunta_38" value="mantequeras" />
-                Mantequeras
-              </label>
-              <label htmlFor="pregutna_38" className="form-label">
+              <label htmlFor="pregunta_38" className="form-label">
                 <Field
                   type="checkbox"
                   name="pregunta_38"
-                  value="separadores_de_nata_y_leche"
+                  value="zona de descanso y cafetería"
                 />
-                Separadores de nata y leche
+                Zona de descanso y cafetería
               </label>
-              <label htmlFor="pregutna_38" className="form-label">
+              <label htmlFor="pregunta_38" className="form-label">
                 <Field
                   type="checkbox"
                   name="pregunta_38"
-                  value="mesa_de_escurrido"
+                  value="zona de muestreo y pruebas de laboratorio"
                 />
-                Mesa de escurrido
+                Zona de muestreo y pruebas de laboratorio
               </label>
-              <label htmlFor="pregutna_38" className="form-label">
+              <label htmlFor="pregunta_38" className="form-label">
                 <Field
                   type="checkbox"
                   name="pregunta_38"
-                  value="tanque_de_enfriamiento"
+                  value="zona de bodega e insumos"
                 />
-                Tanque de enfriamiento
+                Zona de bodega e insumos
               </label>
-              <label htmlFor="pregutna_38" className="form-label">
+              <label htmlFor="pregunta_38" className="form-label">
                 <Field
                   type="checkbox"
                   name="pregunta_38"
-                  value="dosificadora"
+                  value="zona de cuartos frios"
                 />
-                Dosificadora
+                Zona de cuartos frios
               </label>
-              <label htmlFor="pregutna_38" className="form-label">
+              <label htmlFor="pregunta_38" className="form-label">
                 <Field
                   type="checkbox"
                   name="pregunta_38"
-                  value="tina_de_coagulación"
+                  value="punto de venta"
                 />
-                Tina de coagulación
+                Punto de venta
               </label>
-              <label htmlFor="pregutna_38" className="form-label">
-                <Field type="checkbox" name="pregunta_38" value="caldera" />
-                Caldera
-              </label>
-              <label htmlFor="pregutna_38" className="form-label">
+              <label htmlFor="pregunta_38" className="form-label">
                 <Field
                   type="checkbox"
                   name="pregunta_38"
-                  value="estantes_de_transporte_o_almacenamiento"
+                  value="zona de pasteurización"
                 />
-                Estantes de transporte o almacenamiento
+                Zona de pasteurización
               </label>
-              <label htmlFor="pregutna_38" className="form-label">
-                <Field type="checkbox" name="pregunta_38" value="motobomba" />
-                Motobomba
-              </label>
-              <label htmlFor="pregutna_38" className="form-label">
+              <label htmlFor="pregunta_38" className="form-label">
                 <Field
                   type="checkbox"
                   name="pregunta_38"
-                  value="tanque_de_almacenamiento"
+                  value="zona de herramientas"
                 />
-                Tanque de almacenamiento
+                Zona de herramientas
               </label>
-              <label htmlFor="pregutna_38" className="form-label">
+              <label htmlFor="pregunta_38" className="form-label">
                 <Field
                   type="checkbox"
                   name="pregunta_38"
-                  value="refrigeración"
+                  value="oficinas administrativas"
                 />
-                Refrigeración
+                Oficinas administrativas
               </label>
-              <label htmlFor="pregutna_38" className="form-label">
-                <Field type="checkbox" name="pregunta_38" value="ninguna" />
-                Ninguna
+              <label htmlFor="pregunta_38" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_38"
+                  value="zona de tratamiento de residuos"
+                />
+                Zona de tratamiento de residuos
               </label>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_38_otro" className="form-label">
+                Otro{" "}
+              </label>
+              <Field
+                type="text"
+                name="pregunta_38_otro"
+                placeholder="Respuesta..."
+                className="form-control"
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="pregunta_39" className="form-label">
+                39. Seleccione la maquinaria con la que cuenta.
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field type="checkbox" name="pregunta_39" value="marmita" />
+                Marmita
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field type="checkbox" name="pregunta_39" value="hiladora" />
+                Hiladora
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_39"
+                  value="generador electrico"
+                />
+                Generador electrico
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_39"
+                  value="descremadora"
+                />
+                Descremadora
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_39"
+                  value="mesas en acero inoxidable para queso"
+                />
+                Mesas en acero inoxidable para queso
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field type="checkbox" name="pregunta_39" value="prensas" />
+                Prensas
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field type="checkbox" name="pregunta_39" value="mantequeras" />
+                Mantequeras
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_39"
+                  value="separadores de nata y leche"
+                />
+                Separadores de nata y leche
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_39"
+                  value="mesa de escurrido"
+                />
+                Mesa de escurrido
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_39"
+                  value="tanque de enfriamiento"
+                />
+                Tanque de enfriamiento
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_39"
+                  value="empacadora al vacio"
+                />
+                Empacadora al vacio
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_39"
+                  value="tina de coagulación"
+                />
+                Tina de coagulación
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field type="checkbox" name="pregunta_39" value="caldera" />
+                Caldera
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_39"
+                  value="Estantes de transporte o almacenamiento"
+                />
+                Estantes de transporte o almacenamiento
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field type="checkbox" name="pregunta_39" value="motobomba" />
+                Motobomba
+              </label>
+              <label htmlFor="pregutna_39" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_39"
+                  value="tanque de almacenamiento"
+                />
+                Tanque de almacenamiento
+              </label>
+              <label htmlFor="pregunta_39" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_39"
+                  value="refrigeración"
+                />
+                Refrigeración
+              </label>
+              <label htmlFor="pregunta_39" className="form-label">
+                <Field type="checkbox" name="pregunta_39" value="ninguna" />
+                Ninguna
+              </label>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="pregunta_39_otro" className="form-label">
                 Otro:
                 <Field
                   type="text"
-                  name="pregunta_38_otro"
+                  name="pregunta_39_otro"
                   placeholder="Respuesta..."
                   className="form-control"
                 />
@@ -1504,27 +1529,9 @@ export default function FormHome() {
           </div>
           <div className="mb-3">
             <h1>
-              CRITERIO 7 CONDICIONES ACTUALES DE APLICACIÓN DE CALIDAD EN EL
-              SECTOR PRIMARIO Y TRANSFORMACION
+              CRITERIO 7 CONDICIONES ACTUALES DE APLICACIÓN DE CALIDAD EN LA
+              TRANSFORMACION
             </h1>
-            <div className="mb-3">
-              <label htmlFor="pregunta_39" className="form-label">
-                39. ¿Cuentan con certificado de Buenas Prácticas Ganaderas
-                (BPG)?
-              </label>
-              <Field
-                component="select"
-                name="pregunta_39"
-                id="pregunta_39"
-                className="form-control"
-              >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">Si</option>
-                <option value="no">No</option>
-              </Field>
-            </div>
             <div className="mb-3">
               <label htmlFor="pregunta_40" className="form-label">
                 40. Actualmente ¿Tiene registros INVIMA?
@@ -1535,11 +1542,9 @@ export default function FormHome() {
                 id="pregunta_40"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">Si</option>
-                <option value="no">No</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
@@ -1555,7 +1560,8 @@ export default function FormHome() {
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_41" className="form-label">
-                41. ¿Cuentan con certificado de Buenas Prácticas de Ordeño BPO?
+                41. ¿Cuentan con documentos y registros de Buenas Prácticas de
+                Manufactura (BPM)?
               </label>
               <Field
                 component="select"
@@ -1563,17 +1569,15 @@ export default function FormHome() {
                 id="pregunta_41"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_42" className="form-label">
-                42. ¿Cuentan con documentos y registros de Buenas Prácticas de
-                Manufactura (BPM)?
+                42. ¿Dispone de agua potable para la transformación del
+                producto?
               </label>
               <Field
                 component="select"
@@ -1581,17 +1585,14 @@ export default function FormHome() {
                 id="pregunta_42"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_43" className="form-label">
-                43. ¿Dispone de agua potable para la transformación del
-                producto?
+                43. ¿Realiza pruebas de plataforma?
               </label>
               <Field
                 component="select"
@@ -1602,13 +1603,25 @@ export default function FormHome() {
                 <option value="default" hidden>
                   Respuesta
                 </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
+              <label htmlFor="pregunta_43_cuales" className="form-label">
+                Cuales{" "}
+              </label>
+              <Field
+                type="text"
+                name="pregunta_43_cuales"
+                placeholder="Respuesta..."
+                className="form-control"
+              />
+            </div>
+            <div className="mb-3">
               <label htmlFor="pregunta_44" className="form-label">
-                44. ¿Realiza pruebas de plataforma?
+                44. ¿Registra la información obtenida de pruebas o muestras de
+                la leche o productos derivados?
               </label>
               <Field
                 component="select"
@@ -1616,28 +1629,25 @@ export default function FormHome() {
                 id="pregunta_44"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
-              <label htmlFor="pregunta_44_cuales" className="form-label">
-                Cuales{" "}
+              <label htmlFor="pregunta_44_como" className="form-label">
+                Como{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_44_cuales"
+                name="pregunta_44_como"
                 placeholder="Respuesta..."
                 className="form-control"
               />
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_45" className="form-label">
-                45. ¿Registra la información obtenida de pruebas o muestras de
-                la leche o productos derivados?
+                45. ¿Realiza análisis de la información obtenida?
               </label>
               <Field
                 component="select"
@@ -1645,16 +1655,14 @@ export default function FormHome() {
                 id="pregunta_45"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_45_como" className="form-label">
-                Como{" "}
+                Como:{" "}
               </label>
               <Field
                 type="text"
@@ -1665,7 +1673,7 @@ export default function FormHome() {
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_46" className="form-label">
-                46. ¿Realiza análisis de la información obtenida?
+                46. ¿Utiliza indumentaria adecuada para los procesos?
               </label>
               <Field
                 component="select"
@@ -1673,27 +1681,15 @@ export default function FormHome() {
                 id="pregunta_46"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
-              <label htmlFor="pregunta_46_como" className="form-label">
-                Como{" "}
-              </label>
-              <Field
-                type="text"
-                name="pregunta_46_como"
-                placeholder="Respuesta..."
-                className="form-control"
-              />
-            </div>
-            <div className="mb-3">
               <label htmlFor="pregunta_47" className="form-label">
-                47. ¿Utiliza indumentaria adecuada para los procesos?
+                47. ¿Usa desinfectantes autorizados e implementa rotación de
+                estos?
               </label>
               <Field
                 component="select"
@@ -1701,17 +1697,15 @@ export default function FormHome() {
                 id="pregunta_47"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_48" className="form-label">
-                48. ¿Usa desinfectantes autorizados e implementa rotación de
-                estos?
+                48. ¿Aplica algun manejo o tratamiento de residuos sólidos y
+                líquidos?
               </label>
               <Field
                 component="select"
@@ -1719,48 +1713,59 @@ export default function FormHome() {
                 id="pregunta_48"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="pregunta_48_cual" className="form-label">
+                Cual:{" "}
+              </label>
+              <Field
+                type="text"
+                name="pregunta_48_cual"
+                placeholder="Respuesta..."
+                className="form-control"
+              />
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_49" className="form-label">
-                49. ¿Aplica algun manejo o tratamiento de residuos sólidos y
-                líquidos?
-              </label>
-              <Field
-                component="select"
-                name="pregunta_49"
-                id="pregunta_49"
-                className="form-control"
-              >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
-              </Field>
-            </div>
-            <div className="mb-3">
-              <label htmlFor="pregunta_50" className="form-label">
-                50. ¿Cuenta con programas de gestión de buenas prácticas de
+                49. ¿Cuenta con programas de gestión de buenas prácticas de
                 manufactura documentando e implementando?
               </label>
-              <Field
-                component="select"
-                name="pregunta_50"
-                id="pregunta_50"
-                className="form-control"
-              >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
-              </Field>
+              <label htmlFor="pregunta_49">
+                <Field
+                  type="checkbox"
+                  name="pregunta_49"
+                  value="Manejo y abastecimiento de agua potable"
+                />
+                Manejo y abastecimiento de agua potable
+              </label>
+              <label htmlFor="pregunta_49">
+                <Field
+                  type="checkbox"
+                  name="pregunta_49"
+                  value="Limpieza y desinfección"
+                />
+                Limpieza y desinfección
+              </label>
+              <label htmlFor="pregunta_49">
+                <Field
+                  type="checkbox"
+                  name="pregunta_49"
+                  value="Manejo de residuos solidos y liquidos"
+                />
+                Manejo de residuos solidos y liquidos
+              </label>
+              <label htmlFor="pregunta_49">
+                <Field
+                  type="checkbox"
+                  name="pregunta_49"
+                  value="Control integrado de plagas"
+                />
+                Control integrado de plagas
+              </label>
             </div>
           </div>
           <div className="mb-3">
@@ -1768,10 +1773,27 @@ export default function FormHome() {
               CRITERIO 8 INTERÉS Y DISPOSICIÓN DE PARTICIPAR EN EL PROYECTO
             </h1>
             <div className="mb-3">
-              <label htmlFor="pregunta_51" className="form-label">
-                51. ¿Ha recibido o participado en algún proyecto para el
+              <label htmlFor="pregunta_50" className="form-label">
+                50. ¿Ha recibido o participado en algún proyecto para el
                 fortalecimiento o el mejoramiento del proceso productivo de su
                 organización?
+              </label>
+              <Field
+                component="select"
+                name="pregunta_50"
+                id="pregunta_50"
+                className="form-control"
+              >
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+              </Field>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="pregunta_51" className="form-label">
+                51. ¿Desearía participar en un proyecto de investigación y
+                desarrollo que mejore y fomente la creación de nuevos productos
+                derivados de la leche?
               </label>
               <Field
                 component="select"
@@ -1779,17 +1801,16 @@ export default function FormHome() {
                 id="pregunta_51"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_52" className="form-label">
-                52. ¿Desearía participar en un proyecto para el fortalecimiento
-                y mejoramiento del proceso productivo de su organización?
+                52. ¿Desearía participar activamente en el proyecto "DESARROLLO
+                DE UN CULTIVO BIOPROTECTOR PARA EL MEJORAMIENTO DE LA INOCUIDAD
+                DE LA PRODUCCIÓN QUESERA ARTESANAL DEL DEPARTAMENTO DE NARIÑO"?
               </label>
               <Field
                 component="select"
@@ -1797,18 +1818,17 @@ export default function FormHome() {
                 id="pregunta_52"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
-            <div className="mb-3">
+          </div>
+          <div className="mb-3">
+            <h1>CRITERIO 9 CONDICIONES ECONÓMICAS Y DE MERCADEO</h1>
+            <div>
               <label htmlFor="pregunta_53" className="form-label">
-                53. ¿Desearía participar en un proyecto de investigación y
-                desarrollo que mejore y fomente la creación de nuevos productos
-                derivados de la leche?
+                53. ¿Actualmente sus productos tienen un diseño de marca?
               </label>
               <Field
                 component="select"
@@ -1816,18 +1836,14 @@ export default function FormHome() {
                 id="pregunta_53"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_54" className="form-label">
-                54. ¿Desearía participar en un proyecto para el fortalecimiento
-                y mejoramiento de los procesos de diseño, promoción,
-                comercialización y mercadeo de sus productos?
+                54. ¿Sus productos cuentan con empaque y etiqueta?
               </label>
               <Field
                 component="select"
@@ -1835,18 +1851,14 @@ export default function FormHome() {
                 id="pregunta_54"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_55" className="form-label">
-                55. ¿Conoce el proyecto "DESARROLLO DE UN CULTIVO BIOPROTECTOR
-                PARA EL MEJORAMIENTO DE LA INOCUIDAD DE LA PRODUCCIÓN QUESERA
-                ARTESANAL DEL DEPARTAMENTO DE NARIÑO"?
+                55. ¿Utiliza algún medio de promoción para sus productos?
               </label>
               <Field
                 component="select"
@@ -1857,15 +1869,13 @@ export default function FormHome() {
                 <option value="default" hidden>
                   Respuesta
                 </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_56" className="form-label">
-                56. ¿Desearía participar en el proyecto "DESARROLLO DE UN
-                CULTIVO BIOPROTECTOR PARA EL MEJORAMIENTO DE LA INOCUIDAD DE LA
-                PRODUCCIÓN QUESERA ARTESANAL DEL DEPARTAMENTO DE NARIÑO"?
+                56. ¿Considera que tiene algún tipo de competencia directa?
               </label>
               <Field
                 component="select"
@@ -1873,19 +1883,25 @@ export default function FormHome() {
                 id="pregunta_56"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
-          </div>
-          <div className="mb-3">
-            <h1>CRITERIO 9 CONDICIONES ECONÓMICAS Y DE MERCADEO</h1>
-            <div>
+            <div className="mb-3">
+              <label htmlFor="pregunta_56_cuales" className="form-label">
+                Cuales{" "}
+              </label>
+              <Field
+                type="text"
+                name="pregunta_56_cuales"
+                placeholder="Respuesta..."
+                className="form-control"
+              />
+            </div>
+            <div className="mb-3">
               <label htmlFor="pregunta_57" className="form-label">
-                57. ¿Actualmente sus productos tienen un diseño de marca?
+                57. ¿Dónde esta realizando la venta de sus productos?
               </label>
               <Field
                 component="select"
@@ -1893,33 +1909,47 @@ export default function FormHome() {
                 id="pregunta_57"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
+                <option hidden>Respuesta</option>
+                <option value="Empresa transformadora Local">
+                  Empresa transformadora Local
                 </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option value="Empresa transformadora Nacional">
+                  Empresa transformadora Nacional
+                </option>
+                <option value="Producto terminado con venta regional">
+                  Producto terminado con venta regional
+                </option>
+                <option value="Producto terminado con venta nacional">
+                  Producto terminado con venta nacional
+                </option>
               </Field>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="pregunta_57_cuales" className="form-label">
+                Otros:
+              </label>
+              <Field
+                type="text"
+                name="pregunta_57_cuales"
+                placeholder="Respuesta..."
+                className="form-control"
+              />
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_58" className="form-label">
-                58. ¿Sus productos cuentan con empaque y etiqueta?
+                58. Si usted compra la leche y no la produce responda: ¿A qué
+                precio compra el Lt de leche?
               </label>
               <Field
-                component="select"
+                type="text"
                 name="pregunta_58"
-                id="pregunta_58"
+                placeholder="Respuesta..."
                 className="form-control"
-              >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
-              </Field>
+              />
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_59" className="form-label">
-                59. ¿Utiliza algún medio de promoción para sus productos?
+                59. ¿Maneja bonificaciones por calidad de leche?
               </label>
               <Field
                 component="select"
@@ -1927,44 +1957,79 @@ export default function FormHome() {
                 id="pregunta_59"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_60" className="form-label">
-                60. ¿Considera que tiene algún tipo de competencia directa?
+                60. Según su experiencia, elija las opciones que generalmente
+                afecta el precio de la leche.
               </label>
-              <Field
-                component="select"
-                name="pregunta_60"
-                id="pregunta_60"
-                className="form-control"
-              >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
-              </Field>
+              <label htmlFor="pregunta_60">
+                <Field
+                  type="checkbox"
+                  name="pregunta_60"
+                  value="Calidad Fisico-quimica"
+                />
+                Calidad Fisico-quimica
+              </label>
+              <label htmlFor="pregunta_60">
+                <Field
+                  type="checkbox"
+                  name="pregunta_60"
+                  value="Fijada por el comprador"
+                />
+                Fijada por el comprador
+              </label>
+              <label htmlFor="pregunta_60">
+                <Field
+                  type="checkbox"
+                  name="pregunta_60"
+                  value="De acuerdo a la resolución 017 de 2012"
+                />
+                De acuerdo a la resolución 017 de 2012
+              </label>
+              <label htmlFor="pregunta_60">
+                <Field
+                  type="checkbox"
+                  name="pregunta_60"
+                  value="calidad Higienica"
+                />
+                calidad Higienica
+              </label>
+              <label htmlFor="pregunta_60">
+                <Field
+                  type="checkbox"
+                  name="pregunta_60"
+                  value="Calidad Sanitaria"
+                />
+                Calidad Sanitaria
+              </label>
+              <label htmlFor="pregunta_60">
+                <Field
+                  type="checkbox"
+                  name="pregunta_60"
+                  value="Bonificacion por BPO"
+                />
+                Bonificacion por BPO
+              </label>
             </div>
             <div className="mb-3">
-              <label htmlFor="pregunta_60_cuales" className="form-label">
-                Cuales{" "}
+              <label htmlFor="pregunta_60_otros" className="form-label">
+                Otros{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_60_cuales"
+                name="pregunta_60_otros"
                 placeholder="Respuesta..."
                 className="form-control"
               />
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_61" className="form-label">
-                61. ¿Dónde esta realizando la venta de sus productos?
+                61. ¿Conoce cuales son sus costos de produccion?
               </label>
               <Field
                 component="select"
@@ -1972,38 +2037,14 @@ export default function FormHome() {
                 id="pregunta_61"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="empresa_transformadora_local">
-                  Empresa transformadora Local
-                </option>
-                <option value="empresa_transformadora_nacional">
-                  Empresa transformadora Nacional
-                </option>
-                <option value="producto_terminado_con_venta_regional">
-                  Producto terminado con venta regional
-                </option>
-                <option value="producto_terminado_con_venta_nacional">
-                  Producto terminado con venta nacional
-                </option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
-              <label htmlFor="pregunta_61_cuales" className="form-label">
-                Cuales
-              </label>
-              <Field
-                type="text"
-                name="pregunta_61_cuales"
-                placeholder="Respuesta..."
-                className="form-control"
-              />
-            </div>
-            <div className="mb-3">
               <label htmlFor="pregunta_62" className="form-label">
-                62. Si usted compra la leche y no la produce responda: ¿A qué
-                precio compra el Lt de leche?
+                62. ¿Cuáles son sus principales clientes?
               </label>
               <Field
                 type="text"
@@ -2014,7 +2055,8 @@ export default function FormHome() {
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_63" className="form-label">
-                63. ¿Maneja bonificaciones por calidad de leche?
+                63. ¿Estaría dispuesto a comercializar su producto bajo una
+                misma marca de forma asociativa?
               </label>
               <Field
                 component="select"
@@ -2022,55 +2064,39 @@ export default function FormHome() {
                 id="pregunta_63"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_64" className="form-label">
-                64. Según su experiencia, elija las opciones que generalmente
-                afecta el precio de la leche.
+                64. ¿Cuáles son sus costos aproximados de energia y gas?
               </label>
-              <Field
-                component="select"
-                name="pregunta_64"
-                id="pregunta_64"
-                className="form-control"
-              >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="fisico_quimica">Fisico-quimica</option>
-                <option value="fijada_por_el_comprador">
-                  Fijada por el comprador
-                </option>
-                <option value="de_acuerdo_a_la_resolucion_017_de_2012">
-                  De acuerdo a la resolución 017 de 2012
-                </option>
-                <option value="higienica">Higienica</option>
-                <option value="sanitaria">Sanitaria</option>
-                <option value="bonificacion_por_bpg">
-                  Bonificacion por BPG
-                </option>
-              </Field>
-            </div>
-            <div className="mb-3">
-              <label htmlFor="pregunta_64_otros" className="form-label">
-                Otros{" "}
+              <label htmlFor="pregunta_64_energia" className="form-label">
+                Energia:{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_64_otros"
+                name="pregunta_64_energia"
+                placeholder="Respuesta..."
+                className="form-control"
+              />
+              <label htmlFor="pregunta_64_gas" className="form-label">
+                Gas:{" "}
+              </label>
+              <Field
+                type="text"
+                name="pregunta_64_gas"
                 placeholder="Respuesta..."
                 className="form-control"
               />
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_65" className="form-label">
-                65. ¿Conoce cuales son sus costos de produccion?
+                65. ¿Estaria dispuesto a comercializar sus productos, con una
+                entidad privada departamental que sirva como centro de acopio de
+                productos derivados lacteos?
               </label>
               <Field
                 component="select"
@@ -2078,120 +2104,46 @@ export default function FormHome() {
                 id="pregunta_65"
                 className="form-control"
               >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
+                <option hidden>Respuesta</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
               </Field>
             </div>
             <div className="mb-3">
-              <label htmlFor="pregunta_66" className="form-label">
-                66. ¿cuáles son sus costos de producción mensualmente?(valor
-                aproximado)
-              </label>
-              <Field
-                type="text"
-                name="pregunta_66"
-                placeholder="Respuesta..."
-                className="form-control"
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="pregunta_67" className="form-label">
-                67. ¿Estaría dispuesto a comercializar su producto bajo una
-                misma marca de forma asociativa?
-              </label>
-              <Field
-                component="select"
-                name="pregunta_67"
-                id="pregunta_67"
-                className="form-control"
-              >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
-              </Field>
-            </div>
-            <div className="mb-3">
-              <label htmlFor="pregunta_68" className="form-label">
-                68. ¿Cuáles son sus costos aproximados de energia y gas?
-              </label>
-              <label htmlFor="pregunta_68_energia" className="form-label">
-                Energia:{" "}
-              </label>
-              <Field
-                type="text"
-                name="pregunta_68_energia"
-                placeholder="Respuesta..."
-                className="form-control"
-              />
-              <label htmlFor="pregunta_68_gas" className="form-label">
-                Gas:{" "}
-              </label>
-              <Field
-                type="text"
-                name="pregunta_68_gas"
-                placeholder="Respuesta..."
-                className="form-control"
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="pregunta_69" className="form-label">
-                69. ¿Estaria dispuesto a comercializar sus productos, con una
-                entidad privada departamental que sirva como centro de acopio de
-                productos derivados lacteos?
-              </label>
-              <Field
-                component="select"
-                name="pregunta_69"
-                id="pregunta_69"
-                className="form-control"
-              >
-                <option value="default" hidden>
-                  Respuesta
-                </option>
-                <option value="si">si</option>
-                <option value="no">no</option>
-              </Field>
-            </div>
-            <div className="mb-3">
-              <label htmlFor="pregunta_69_porque" className="form-label">
+              <label htmlFor="pregunta_65_porque" className="form-label">
                 ¿POR QUÉ?{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_69_porque"
+                name="pregunta_65_porque"
                 placeholder="Respuesta..."
                 className="form-control"
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="pregunta_70" className="form-label">
-                70. ¿Cuáles son los valores unitarios de sus productos?
+              <label htmlFor="pregunta_66" className="form-label">
+                66. ¿Cuáles son los valores unitarios de sus productos?
               </label>
               <br />
               <label htmlFor="yogurt" className="form-label">
                 Yogurt{" "}
               </label>
               <br />
-              <label htmlFor="pregunta_70_yogurt_medida" className="form-label">
+              <label htmlFor="pregunta_66_yogurt_medida" className="form-label">
                 Medida{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_yogurt_medida"
+                name="pregunta_66_yogurt_medida"
                 placeholder="Respuesta..."
                 className="form-control"
               />
-              <label htmlFor="pregunta_70_yogurt_valor" className="form-label">
+              <label htmlFor="pregunta_66_yogurt_valor" className="form-label">
                 Valor{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_yogurt_valor"
+                name="pregunta_66_yogurt_valor"
                 placeholder="Respuesta..."
                 className="form-control"
               />
@@ -2200,21 +2152,21 @@ export default function FormHome() {
                 Kumis{" "}
               </label>
               <br />
-              <label htmlFor="pregunta_70_kumis_medida" className="form-label">
+              <label htmlFor="pregunta_66_kumis_medida" className="form-label">
                 Medida{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_kumis_medida"
+                name="pregunta_66_kumis_medida"
                 placeholder="Respuesta..."
                 className="form-control"
               />
-              <label htmlFor="pregunta_70_kumis_valor" className="form-label">
+              <label htmlFor="pregunta_66_kumis_valor" className="form-label">
                 Valor{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_kumis_valor"
+                name="pregunta_66_kumis_valor"
                 placeholder="Respuesta..."
                 className="form-control"
               />
@@ -2224,23 +2176,23 @@ export default function FormHome() {
               </label>
               <br />
               <label
-                htmlFor="pregunta_70_cuajada_medida"
+                htmlFor="pregunta_66_cuajada_medida"
                 className="form-label"
               >
                 Medida{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_cuajada_medida"
+                name="pregunta_66_cuajada_medida"
                 placeholder="Respuesta..."
                 className="form-control"
               />
-              <label htmlFor="pregunta_70_cuajada_valor" className="form-label">
+              <label htmlFor="pregunta_66_cuajada_valor" className="form-label">
                 Valor{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_cuajada_valor"
+                name="pregunta_66_cuajada_valor"
                 placeholder="Respuesta..."
                 className="form-control"
               />
@@ -2250,26 +2202,26 @@ export default function FormHome() {
               </label>
               <br />
               <label
-                htmlFor="pregunta_70_queso_doble_crema_medida"
+                htmlFor="pregunta_66_queso_doble_crema_medida"
                 className="form-label"
               >
                 Medida{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_queso_doble_crema_medida"
+                name="pregunta_66_queso_doble_crema_medida"
                 placeholder="Respuesta..."
                 className="form-control"
               />
               <label
-                htmlFor="pregunta_70_queso_doble_crema_valor"
+                htmlFor="pregunta_66_queso_doble_crema_valor"
                 className="form-label"
               >
                 Valor{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_queso_doble_crema_valor"
+                name="pregunta_66_queso_doble_crema_valor"
                 placeholder="Respuesta..."
                 className="form-control"
               />
@@ -2279,47 +2231,47 @@ export default function FormHome() {
               </label>
               <br />
               <label
-                htmlFor="pregunta_70_queso_campesino_medida"
+                htmlFor="pregunta_66_queso_campesino_medida"
                 className="form-label"
               >
                 Medida{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_queso_campesino_medida"
+                name="pregunta_66_queso_campesino_medida"
                 placeholder="Respuesta..."
                 className="form-control"
               />
               <label
-                htmlFor="pregunta_70_queso_campesino_valor"
+                htmlFor="pregunta_66_queso_campesino_valor"
                 className="form-label"
               >
                 Valor{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_queso_campesino_valor"
+                name="pregunta_66_queso_campesino_valor"
                 placeholder="Respuesta..."
                 className="form-control"
               />
               <br />
               <label htmlFor="leche">Leche </label>
               <br />
-              <label htmlFor="pregunta_70_leche_medida" className="form-label">
+              <label htmlFor="pregunta_66_leche_medida" className="form-label">
                 Medida{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_leche_medida"
+                name="pregunta_66_leche_medida"
                 placeholder="Respuesta..."
                 className="form-control"
               />
-              <label htmlFor="pregunta_70_leche_valor" className="form-label">
+              <label htmlFor="pregunta_66_leche_valor" className="form-label">
                 Valor{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_leche_valor"
+                name="pregunta_66_leche_valor"
                 placeholder="Respuesta..."
                 className="form-control"
               />
@@ -2329,26 +2281,26 @@ export default function FormHome() {
               </label>
               <br />
               <label
-                htmlFor="pregunta_70_quesos_madurados_medida"
+                htmlFor="pregunta_66_quesos_madurados_medida"
                 className="form-label"
               >
                 Medida{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_quesos_madurados_medida"
+                name="pregunta_66_quesos_madurados_medida"
                 placeholder="Respuesta..."
                 className="form-control"
               />
               <label
-                htmlFor="pregunta_70_quesos_madurados_valor"
+                htmlFor="pregunta_66_quesos_madurados_valor"
                 className="form-label"
               >
                 Valor{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_quesos_madurados_valor"
+                name="pregunta_66_quesos_madurados_valor"
                 placeholder="Respuesta..."
                 className="form-control"
               />
@@ -2358,26 +2310,26 @@ export default function FormHome() {
               </label>
               <br />
               <label
-                htmlFor="pregunta_70_requeson_medida"
+                htmlFor="pregunta_66_requeson_medida"
                 className="form-label"
               >
                 Medida{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_requeson_medida"
+                name="pregunta_66_requeson_medida"
                 placeholder="Respuesta..."
                 className="form-control"
               />
               <label
-                htmlFor="pregunta_70_requeson_valor"
+                htmlFor="pregunta_66_requeson_valor"
                 className="form-label"
               >
                 Valor{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_requeson_valor"
+                name="pregunta_66_requeson_valor"
                 placeholder="Respuesta..."
                 className="form-control"
               />
@@ -2387,37 +2339,37 @@ export default function FormHome() {
               </label>
               <br />
               <label
-                htmlFor="pregunta_70_arequipe_medida"
+                htmlFor="pregunta_66_arequipe_medida"
                 className="form-label"
               >
                 Medida{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_arequipe_medida"
+                name="pregunta_66_arequipe_medida"
                 placeholder="Respuesta..."
                 className="form-control"
               />
               <label
-                htmlFor="pregunta_70_arequipe_valor"
+                htmlFor="pregunta_66_arequipe_valor"
                 className="form-label"
               >
                 Valor{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_arequipe_valor"
+                name="pregunta_66_arequipe_valor"
                 placeholder="Respuesta..."
                 className="form-control"
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="pregunta_70_otros" className="form-label">
+              <label htmlFor="pregunta_66_otros" className="form-label">
                 Otros{" "}
               </label>
               <Field
                 type="text"
-                name="pregunta_70_otros"
+                name="pregunta_66_otros"
                 placeholder="Respuesta..."
                 className="form-control"
               />
@@ -2425,11 +2377,22 @@ export default function FormHome() {
           </div>
           <div className="mb-3">
             <label htmlFor="observaciones" className="form-label">
-              Observaciones{" "}
+              Observaciones:{" "}
             </label>
             <Field
               type="text"
               name="observaciones"
+              placeholder="Respuesta..."
+              className="form-control"
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="fecha" className="form-label">
+              Fecha:{" "}
+            </label>
+            <Field
+              type="text"
+              name="fecha"
               placeholder="Respuesta..."
               className="form-control"
             />
@@ -2489,11 +2452,14 @@ export default function FormHome() {
               </button>
             </Popup>
             <br />
-            <Field
-              type="checkbox"
-              name="firma_encuestado"
-              value={firmaEncuestado}
-            />
+            <label htmlFor="firma_encuestado">
+              <Field
+                type="checkbox"
+                name="firma_encuestado"
+                value={firmaEncuestado}
+              />
+              Confirmar firma
+            </label>
             <img src={firmaEncuestado} alt={firmaEncuestado} />
           </div>
           <div className="mb-3">
@@ -2511,18 +2477,19 @@ export default function FormHome() {
               </button>
             </Popup>
             <br />
-            <Field
-              type="checkbox"
-              name="firma_encuestador"
-              value={firmaEncuestador}
-            />
+            <label htmlFor="firma_encuestador">
+              <Field
+                type="checkbox"
+                name="firma_encuestador"
+                value={firmaEncuestador}
+              />
+              Confirmar Firma
+            </label>
             <img src={firmaEncuestador} alt={firmaEncuestador} />
           </div>
           <button type="submit">Crear encuesta </button>
         </Form>
       </Formik>
-      {/* <button onClick={() => console.log(firmaEncuestado)}>asdfsa</button>
-      <button onClick={() => console.log(firmaEncuestador)}>asdf</button> */}
     </div>
   );
 }

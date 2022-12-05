@@ -1,6 +1,7 @@
 import Cards from "../cards/Cards";
 import { useEffect, useState } from "react";
 import { getForms } from "../../connection/getForms";
+import NavBar from "../navBar/NavBar";
 import "./Home.css";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
 
   return (
     <div>
+      <NavBar />
       <Cards forms={forms} />
     </div>
   );
