@@ -330,7 +330,7 @@ export default function FormHome() {
           <div className="mb-3">
             <h1>CRITERIO 2 CARACTERISTICAS DE ACOPIO Y TRANSPORTE DE LECHE</h1>
             <div>
-              <label htmlFor="pregunta_9" className="form-label">
+              {/* <label htmlFor="pregunta_9" className="form-label">
                 9. ¿Qué métodos de acopio de leche utiliza?{" "}
               </label>
               <Field
@@ -349,7 +349,8 @@ export default function FormHome() {
                 <option value="Recibe al productor en finca">
                   Recibe al productor en finca
                 </option>
-              </Field>
+              </Field> */}
+              {/* multiple */}
               <label htmlFor="pregunta_9_otro" className="form-label">
                 Otro:{" "}
               </label>
@@ -361,7 +362,7 @@ export default function FormHome() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="pregunta_10" className="form-label">
+              {/* <label htmlFor="pregunta_10" className="form-label">
                 10. ¿De qué manera se transporta la leche hasta la planta/centro
                 de acopio?
               </label>
@@ -376,7 +377,8 @@ export default function FormHome() {
                 <option value="Carro Particular">Carro Particular</option>
                 <option value="Moto">Moto</option>
                 <option value="Caballo">Caballo</option>
-              </Field>
+              </Field> */}
+              {/* multiple */}
               <label htmlFor="pregunta_10_otro" className="form-label">
                 Otro:{" "}
               </label>
@@ -388,7 +390,7 @@ export default function FormHome() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="pregunta_11" className="form-label">
+              {/* <label htmlFor="pregunta_11" className="form-label">
                 11. ¿De qué manera Transporta la leche desde plataforma a areas
                 de proceso?
               </label>
@@ -404,7 +406,8 @@ export default function FormHome() {
                 </option>
                 <option value="Tanques plasticos">Tanques plasticos</option>
                 <option value="Motobomba">Motobomba</option>
-              </Field>
+              </Field> */}
+              {/* multiple */}
               <label htmlFor="pregunta_11_otro" className="form-label">
                 Otro:{" "}
               </label>
@@ -416,7 +419,7 @@ export default function FormHome() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="pregunta_12" className="form-label">
+              {/* <label htmlFor="pregunta_12" className="form-label">
                 12. ¿De qué manera realiza el almacenamiento de la leche?
               </label>
               <Field
@@ -431,7 +434,8 @@ export default function FormHome() {
                 </option>
                 <option value="Tanque temporal">Tanque temporal</option>
                 <option value="Tanque frio">Tanque frio</option>
-              </Field>
+              </Field> */}
+              {/* multiple */}
               <label htmlFor="pregunta_12_otro" className="form-label">
                 Otro:{" "}
               </label>
@@ -445,7 +449,7 @@ export default function FormHome() {
             <div className="mb-3">
               <h4>CONOCIMIENTO DE SUS PROVEEDORES</h4>
               <div className="mb-3">
-                <label htmlFor="pregunta_13" className="form-label">
+                {/* <label htmlFor="pregunta_13" className="form-label">
                   13. ¿Sus proveedores de leche son?{" "}
                 </label>
                 <Field
@@ -457,7 +461,8 @@ export default function FormHome() {
                   <option hidden>Respuesta</option>
                   <option value="Asociados">Asociados</option>
                   <option value="Externos">Externos</option>
-                </Field>
+                </Field> */}
+                {/* multiple */}
               </div>
               <div className="mb-3">
                 <label htmlFor="pregunta_14" className="form-label">
@@ -595,7 +600,7 @@ export default function FormHome() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="pregunta_21" className="form-label">
+              {/* <label htmlFor="pregunta_21" className="form-label">
                 21. En lo que respecta a vías, que tipo de acceso predomina para
                 el transporte de leche a la planta
               </label>
@@ -612,7 +617,8 @@ export default function FormHome() {
                   Via carreteable (destapada)
                 </option>
                 <option value="Trocha - a pie">Trocha - a pie</option>
-              </Field>
+              </Field> */}
+              {/* multiple con propio porcentaje igual para 22 */}
               <label htmlFor="pregunta_21_porcentaje" className="form-label">
                 Porcentaje:
                 <Field
@@ -1186,7 +1192,7 @@ export default function FormHome() {
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_32" className="form-label">
-                32. ¿Cuál es el número de personal fijo y oCASIONALES que
+                32. ¿Cuál es el número de personal OCASIONAL que
                 trabaja en la planta y/o centro acopio?
               </label>
               <Field
@@ -1230,7 +1236,7 @@ export default function FormHome() {
                 35. Si su respuesta anterior es afirmativa, responda las
                 siguientes preguntas, ¿ Conoce cuantas organizaiones ademas de
                 la suya pertenecen al grupo, asociación u organismo de segundo
-                nivel? nivel?
+                nivel?
               </label>
               <Field
                 type="text"
@@ -1900,7 +1906,7 @@ export default function FormHome() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="pregunta_57" className="form-label">
+              {/* <label htmlFor="pregunta_57" className="form-label">
                 57. ¿Dónde esta realizando la venta de sus productos?
               </label>
               <Field
@@ -1922,7 +1928,8 @@ export default function FormHome() {
                 <option value="Producto terminado con venta nacional">
                   Producto terminado con venta nacional
                 </option>
-              </Field>
+              </Field> */}
+              {/* multiple */}
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_57_cuales" className="form-label">
@@ -2235,6 +2242,7 @@ export default function FormHome() {
                 className="form-label"
               >
                 Medida{" "}
+                {/* presentacion */}
               </label>
               <Field
                 type="text"
