@@ -45,9 +45,9 @@ export default function FormHome() {
           pregunta_6: "",
           pregunta_7: "",
           pregunta_8: "",
-          pregunta_9: "",
+          pregunta_9: [],
           pregunta_9_otro: "",
-          pregunta_10: "",
+          pregunta_10: [],
           pregunta_10_otro: "",
           pregunta_11: "",
           pregunta_11_otro: "",
@@ -330,27 +330,33 @@ export default function FormHome() {
           <div className="mb-3">
             <h1>CRITERIO 2 CARACTERISTICAS DE ACOPIO Y TRANSPORTE DE LECHE</h1>
             <div>
-              {/* <label htmlFor="pregunta_9" className="form-label">
+              <label htmlFor="pregunta_9" className="form-label">
                 9. ¿Qué métodos de acopio de leche utiliza?{" "}
               </label>
-              <Field
-                component="select"
-                name="pregunta_9"
-                id="pregunta_9"
-                className="form-control"
-              >
-                <option hidden>Respuesta</option>
-                <option value="Se reibe en planta/centro de acopio">
-                  Se reibe en planta/centro de acopio
-                </option>
-                <option value="La recoge en el centro de acopio">
-                  La recoge en el centro de acopio
-                </option>
-                <option value="Recibe al productor en finca">
-                  Recibe al productor en finca
-                </option>
-              </Field> */}
-              {/* multiple */}
+              <label htmlFor="pregunta_9">
+                <Field
+                  type="checkbox"
+                  name="pregunta_9"
+                  value="Se reibe en planta/centro de acopio"
+                />
+                Se reibe en planta/centro de acopio
+              </label>
+              <label htmlFor="pregunta_9">
+                <Field
+                  type="checkbox"
+                  name="pregunta_9"
+                  value="La recoge en el centro de acopio"
+                />
+                La recoge en el centro de acopio
+              </label>
+              <label htmlFor="pregunta_9">
+                <Field
+                  type="checkbox"
+                  name="pregunta_9"
+                  value="Recibe al productor en finca"
+                />
+                Recibe al productor en finca
+              </label>
               <label htmlFor="pregunta_9_otro" className="form-label">
                 Otro:{" "}
               </label>
@@ -362,23 +368,30 @@ export default function FormHome() {
               />
             </div>
             <div className="mb-3">
-              {/* <label htmlFor="pregunta_10" className="form-label">
+              <label htmlFor="pregunta_10" className="form-label">
                 10. ¿De qué manera se transporta la leche hasta la planta/centro
                 de acopio?
               </label>
-              <Field
-                component="select"
-                name="pregunta_10"
-                id="pregunta_10"
-                className="form-control"
-              >
-                <option hidden>Respuesta</option>
-                <option value="Termo King">Termo King</option>
-                <option value="Carro Particular">Carro Particular</option>
-                <option value="Moto">Moto</option>
-                <option value="Caballo">Caballo</option>
-              </Field> */}
-              {/* multiple */}
+              <label htmlFor="pregunta_10">
+                <Field type="checkbox" name="pregunta_10" value="Termo King" />
+                Termo King
+              </label>
+              <label htmlFor="pregunta_10">
+                <Field
+                  type="checkbox"
+                  name="pregunta_10"
+                  value="Carro Particular"
+                />
+                Carro Particular
+              </label>
+              <label htmlFor="pregunta_10">
+                <Field type="checkbox" name="pregunta_10" value="Moto" />
+                Moto
+              </label>
+              <label htmlFor="pregunta_10">
+                <Field type="checkbox" name="pregunta_10" value="Caballo" />
+                Caballo
+              </label>
               <label htmlFor="pregunta_10_otro" className="form-label">
                 Otro:{" "}
               </label>
@@ -1192,8 +1205,8 @@ export default function FormHome() {
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_32" className="form-label">
-                32. ¿Cuál es el número de personal OCASIONAL que
-                trabaja en la planta y/o centro acopio?
+                32. ¿Cuál es el número de personal OCASIONAL que trabaja en la
+                planta y/o centro acopio?
               </label>
               <Field
                 type="text"
@@ -2241,8 +2254,7 @@ export default function FormHome() {
                 htmlFor="pregunta_66_queso_campesino_medida"
                 className="form-label"
               >
-                Medida{" "}
-                {/* presentacion */}
+                Medida {/* presentacion */}
               </label>
               <Field
                 type="text"
