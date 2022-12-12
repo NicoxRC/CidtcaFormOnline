@@ -3,13 +3,13 @@ import dotenv from "dotenv";
 dotenv.config();
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
-export let sequelize =
+export let sequelize: any =
   process.env.NODE_ENV === "production"
     ? new Sequelize({
         database: DB_NAME,
         dialect: "postgres",
         host: DB_HOST,
-        port: 5432,
+        port: 5917 || 5432,
         username: DB_USER,
         password: DB_PASSWORD,
         pool: {
