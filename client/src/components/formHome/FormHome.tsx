@@ -49,11 +49,11 @@ export default function FormHome() {
           pregunta_9_otro: "",
           pregunta_10: [],
           pregunta_10_otro: "",
-          pregunta_11: "",
+          pregunta_11: [],
           pregunta_11_otro: "",
-          pregunta_12: "",
+          pregunta_12: [],
           pregunta_12_otro: "",
-          pregunta_13: "",
+          pregunta_13: [],
           pregunta_14: "",
           pregunta_15: "",
           pregunta_16: "",
@@ -403,24 +403,30 @@ export default function FormHome() {
               />
             </div>
             <div className="mb-3">
-              {/* <label htmlFor="pregunta_11" className="form-label">
+              <label htmlFor="pregunta_11" className="form-label">
                 11. ¿De qué manera Transporta la leche desde plataforma a areas
                 de proceso?
               </label>
-              <Field
-                component="select"
-                name="pregunta_11"
-                id="pregunta_11"
-                className="form-control"
-              >
-                <option hidden>Respuesta</option>
-                <option value="Cantinas de aluminio">
-                  Cantinas de aluminio
-                </option>
-                <option value="Tanques plasticos">Tanques plasticos</option>
-                <option value="Motobomba">Motobomba</option>
-              </Field> */}
-              {/* multiple */}
+              <label htmlFor="pregunta_11">
+                <Field
+                  type="checkbox"
+                  name="pregunta_11"
+                  value="cantinas de aluminio"
+                />
+                Cantinas de aluminio
+              </label>
+              <label htmlFor="pregunta_11">
+                <Field
+                  type="checkbox"
+                  name="pregunta_11"
+                  value="tanques plasticos"
+                />
+                Tanques plasticos
+              </label>
+              <label htmlFor="pregunta_11">
+                <Field type="checkbox" name="pregunta_11" value="motobomba" />
+                Motobomba
+              </label>
               <label htmlFor="pregunta_11_otro" className="form-label">
                 Otro:{" "}
               </label>
@@ -432,23 +438,29 @@ export default function FormHome() {
               />
             </div>
             <div className="mb-3">
-              {/* <label htmlFor="pregunta_12" className="form-label">
+              <label htmlFor="pregunta_12" className="form-label">
                 12. ¿De qué manera realiza el almacenamiento de la leche?
               </label>
-              <Field
-                component="select"
-                name="pregunta_12"
-                id="pregunta_12"
-                className="form-control"
-              >
-                <option hidden>Respuesta</option>
-                <option value="Pasa directo a proceso">
-                  Pasa directo a proceso
-                </option>
-                <option value="Tanque temporal">Tanque temporal</option>
-                <option value="Tanque frio">Tanque frio</option>
-              </Field> */}
-              {/* multiple */}
+              <label htmlFor="pregunta_12">
+                <Field
+                  type="checkbox"
+                  name="pregunta_12"
+                  value="pasa directo a proceso"
+                />
+                Pasa directo a proceso
+              </label>
+              <label htmlFor="pregunta_12">
+                <Field
+                  type="checkbox"
+                  name="pregunta_12"
+                  value="tanque temporal"
+                />
+                Tanque temporal
+              </label>
+              <label htmlFor="pregunta_12">
+                <Field type="checkbox" name="pregunta_12" value="tanque frio" />
+                Tanque frio
+              </label>
               <label htmlFor="pregunta_12_otro" className="form-label">
                 Otro:{" "}
               </label>
@@ -462,20 +474,17 @@ export default function FormHome() {
             <div className="mb-3">
               <h4>CONOCIMIENTO DE SUS PROVEEDORES</h4>
               <div className="mb-3">
-                {/* <label htmlFor="pregunta_13" className="form-label">
+                <label htmlFor="pregunta_13" className="form-label">
                   13. ¿Sus proveedores de leche son?{" "}
                 </label>
-                <Field
-                  component="select"
-                  name="pregunta_13"
-                  id="pregunta_13"
-                  className="form-control"
-                >
-                  <option hidden>Respuesta</option>
-                  <option value="Asociados">Asociados</option>
-                  <option value="Externos">Externos</option>
-                </Field> */}
-                {/* multiple */}
+                <label htmlFor="pregunta_13">
+                  <Field type="checkbox" name="pregunta_13" value="Asociados" />
+                  Asociados
+                </label>
+                <label htmlFor="pregunta_13">
+                  <Field type="checkbox" name="pregunta_13" value="Externos" />
+                  Externos
+                </label>
               </div>
               <div className="mb-3">
                 <label htmlFor="pregunta_14" className="form-label">
@@ -613,7 +622,7 @@ export default function FormHome() {
               />
             </div>
             <div className="mb-3">
-              {/* <label htmlFor="pregunta_21" className="form-label">
+              <label htmlFor="pregunta_21" className="form-label">
                 21. En lo que respecta a vías, que tipo de acceso predomina para
                 el transporte de leche a la planta
               </label>
@@ -630,7 +639,7 @@ export default function FormHome() {
                   Via carreteable (destapada)
                 </option>
                 <option value="Trocha - a pie">Trocha - a pie</option>
-              </Field> */}
+              </Field>
               {/* multiple con propio porcentaje igual para 22 */}
               <label htmlFor="pregunta_21_porcentaje" className="form-label">
                 Porcentaje:
@@ -1919,30 +1928,41 @@ export default function FormHome() {
               />
             </div>
             <div className="mb-3">
-              {/* <label htmlFor="pregunta_57" className="form-label">
+              <label htmlFor="pregunta_57" className="form-label">
                 57. ¿Dónde esta realizando la venta de sus productos?
               </label>
-              <Field
-                component="select"
-                name="pregunta_57"
-                id="pregunta_57"
-                className="form-control"
-              >
-                <option hidden>Respuesta</option>
-                <option value="Empresa transformadora Local">
-                  Empresa transformadora Local
-                </option>
-                <option value="Empresa transformadora Nacional">
-                  Empresa transformadora Nacional
-                </option>
-                <option value="Producto terminado con venta regional">
-                  Producto terminado con venta regional
-                </option>
-                <option value="Producto terminado con venta nacional">
-                  Producto terminado con venta nacional
-                </option>
-              </Field> */}
-              {/* multiple */}
+              <label htmlFor="pregunta_57">
+                <Field
+                  type="checkbox"
+                  name="pregunta_57"
+                  value="Empresa transformadora Local"
+                />
+                Empresa transformadora Local
+              </label>
+              <label htmlFor="pregunta_57">
+                <Field
+                  type="checkbox"
+                  name="pregunta_57"
+                  value="Empresa transformadora Nacional"
+                />
+                Empresa transformadora Nacional
+              </label>
+              <label htmlFor="pregunta_57">
+                <Field
+                  type="checkbox"
+                  name="pregunta_57"
+                  value="Producto terminado con venta regional"
+                />
+                Producto terminado con venta regional
+              </label>
+              <label htmlFor="pregunta_57">
+                <Field
+                  type="checkbox"
+                  name="pregunta_57"
+                  value="Producto terminado con venta nacional"
+                />
+                Producto terminado con venta nacional
+              </label>
             </div>
             <div className="mb-3">
               <label htmlFor="pregunta_57_cuales" className="form-label">

@@ -36,31 +36,31 @@ export const Form = sequelize.define("forms", {
     type: DataTypes.STRING,
   },
   pregunta_9: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING),
   },
   pregunta_9_otro: {
     type: DataTypes.STRING,
   },
   pregunta_10: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING),
   },
   pregunta_10_otro: {
     type: DataTypes.STRING,
   },
   pregunta_11: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING),
   },
   pregunta_11_otro: {
     type: DataTypes.STRING,
   },
   pregunta_12: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING),
   },
   pregunta_12_otro: {
     type: DataTypes.STRING,
   },
   pregunta_13: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING),
   },
   pregunta_14: {
     type: DataTypes.STRING,
@@ -321,7 +321,7 @@ export const Form = sequelize.define("forms", {
     type: DataTypes.STRING,
   },
   pregunta_57: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING),
   },
   pregunta_57_cuales: {
     type: DataTypes.STRING,

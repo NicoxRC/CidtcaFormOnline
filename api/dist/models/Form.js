@@ -38,31 +38,31 @@ exports.Form = database_1.sequelize.define("forms", {
         type: sequelize_1.DataTypes.STRING,
     },
     pregunta_9: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
     },
     pregunta_9_otro: {
         type: sequelize_1.DataTypes.STRING,
     },
     pregunta_10: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
     },
     pregunta_10_otro: {
         type: sequelize_1.DataTypes.STRING,
     },
     pregunta_11: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
     },
     pregunta_11_otro: {
         type: sequelize_1.DataTypes.STRING,
     },
     pregunta_12: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
     },
     pregunta_12_otro: {
         type: sequelize_1.DataTypes.STRING,
     },
     pregunta_13: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
     },
     pregunta_14: {
         type: sequelize_1.DataTypes.STRING,
@@ -323,7 +323,7 @@ exports.Form = database_1.sequelize.define("forms", {
         type: sequelize_1.DataTypes.STRING,
     },
     pregunta_57: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
     },
     pregunta_57_cuales: {
         type: sequelize_1.DataTypes.STRING,
