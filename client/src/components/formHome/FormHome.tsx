@@ -140,7 +140,7 @@ export default function FormHome() {
           pregunta_55: "",
           pregunta_56: "",
           pregunta_56_cuales: "",
-          pregunta_57: "",
+          pregunta_57: [],
           pregunta_57_cuales: "",
           pregunta_58: "",
           pregunta_59: "",
