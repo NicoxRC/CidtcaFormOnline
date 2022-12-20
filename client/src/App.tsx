@@ -1,5 +1,5 @@
 import FormHome from "./components/formHome/FormHome";
-import Home from "./components/home/Home";
+import Home from "./components/Home/Home";
 import FormDetails from "./components/formDetails/FormDetails";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
