@@ -1,8 +1,7 @@
+import NavBar from "../navBar/NavBar";
 import Cards from "../cards/Cards";
 import { useEffect, useState } from "react";
 import { getForms } from "../../connection/getForms";
-import NavBar from "../navBar/NavBar";
-import "./Home.css";
 
 export default function Home() {
   const [forms, setForms]: any = useState([]);

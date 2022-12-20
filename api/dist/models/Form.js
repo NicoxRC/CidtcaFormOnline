@@ -325,7 +325,7 @@ exports.Form = database_1.sequelize.define("forms", {
     pregunta_57: {
         type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
     },
-    pregunta_57_cuales: {
+    pregunta_57_otros: {
         type: sequelize_1.DataTypes.STRING,
     },
     pregunta_58: {
@@ -442,4 +442,6 @@ exports.Form = database_1.sequelize.define("forms", {
     firma_encuestador: {
         type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.JSON),
     },
+}, {
+    timestamps: false,
 });

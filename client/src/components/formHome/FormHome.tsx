@@ -1,8 +1,8 @@
+import Popup from "reactjs-popup";
+import SignaturePad from "react-signature-canvas";
 import { Formik, Form, Field } from "formik";
 import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Popup from "reactjs-popup";
-import SignaturePad from "react-signature-canvas";
 import { postForm } from "../../connection/postForm";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "reactjs-popup/dist/index.css";
@@ -141,7 +141,7 @@ export default function FormHome() {
           pregunta_56: "",
           pregunta_56_cuales: "",
           pregunta_57: [],
-          pregunta_57_cuales: "",
+          pregunta_57_otros: "",
           pregunta_58: "",
           pregunta_59: "",
           pregunta_60: [],
@@ -1965,12 +1965,12 @@ export default function FormHome() {
               </label>
             </div>
             <div className="mb-3">
-              <label htmlFor="pregunta_57_cuales" className="form-label">
+              <label htmlFor="pregunta_57_otros" className="form-label">
                 Otros:
               </label>
               <Field
                 type="text"
-                name="pregunta_57_cuales"
+                name="pregunta_57_otros"
                 placeholder="Respuesta..."
                 className="form-control"
               />
