@@ -7,7 +7,7 @@
 .principal_container {
   display: flex;
   flex-direction: column;
-  width: 80rem;
+  width: 75%;
   margin-top: 3px;
   margin-left: 15vw;
 }
@@ -21,11 +21,6 @@
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 10px;
-}
-
-.container_details h2 {
-  display: flex;
-  align-items: center;
 }
 
 .container_details b {
