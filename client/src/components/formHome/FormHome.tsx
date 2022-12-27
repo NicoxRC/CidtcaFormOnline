@@ -1,6 +1,7 @@
 import Popup from "reactjs-popup";
 import SignaturePad from "react-signature-canvas";
-import { Formik, Form, Field } from "formik";
+import * as yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { postForm } from "../../connection/postForm";
@@ -12,10 +13,35 @@ export default function FormHome() {
   const [firmaEncuestado, setFirmaEncuestado] = useState("");
   const [firmaEncuestador, setFirmaEncuestador] = useState("");
   const history = useHistory();
+  const municipio: string[] = [
+    "Guachucal",
+    "Aldana",
+    "Cuaspud",
+    "Cumbal",
+    "Contadero",
+    "Cordoba",
+    "Gualmatan",
+    "Iles",
+    "Ipiales",
+    "Potosi",
+    "Puerres",
+    "Pupiales",
+    "Pasto",
+    "Tangua",
+    "Nariño",
+    "La Florida",
+    "Mallama",
+    "Buesaco",
+    "Guaitarilla",
+    "Tuquerres",
+    "Ospina",
+    "Sapuyes",
+  ];
 
   const handleSubmit = async (values: any) => {
+    console.log(values);
     await postForm(values);
-    history.push("/");
+    // history.push("/");
   };
 
   const encuestado: any = useRef({});
@@ -52,7 +78,8 @@ export default function FormHome() {
           pregunta_2_otro: "",
           pregunta_3: [],
           pregunta_4: "",
-          pregunta_5: "",
+          pregunta_5_numero: "",
+          pregunta_5_correo: "",
           pregunta_6: "",
           pregunta_7: "",
           pregunta_8: "",
@@ -75,10 +102,16 @@ export default function FormHome() {
           pregunta_18_cuantos: "",
           pregunta_19: "",
           pregunta_20: "",
-          pregunta_21: "",
-          pregunta_21_porcentaje: "",
-          pregunta_22: "",
-          pregunta_22_porcentaje: "",
+          pregunta_21: [],
+          pregunta_21_porcentaje_pavimentada: "",
+          pregunta_21_porcentaje_placa_huella: "",
+          pregunta_21_porcentaje_via_carreteable: "",
+          pregunta_21_porcentaje_trocha_a_pie: "",
+          pregunta_22: [],
+          pregunta_22_porcentaje_pavimentada: "",
+          pregunta_22_porcentaje_placa_huella: "",
+          pregunta_22_porcentaje_via_carreteable: "",
+          pregunta_22_porcentaje_trocha_a_pie: "",
           pregunta_23: "",
           pregunta_24: "",
           pregunta_25: "",
@@ -192,6 +225,152 @@ export default function FormHome() {
           cedula_encuestador: "",
           firma_encuestador: [],
         }}
+        validationSchema={yup.object({
+          pregunta_1: yup.string().required("Debe escoger una opcion"),
+          pregunta_2: yup.string().required("Debe escoger una opcion"),
+          pregunta_2_otro: yup.string().optional(),
+          pregunta_3: yup.array().min(1, "Debe seleccionar alguna opcion"),
+          // pregunta_4: "",
+          // pregunta_5: "",
+          // pregunta_6: "",
+          // pregunta_7: "",
+          // pregunta_8: "",
+          // pregunta_9: [],
+          // pregunta_9_otro: "",
+          // pregunta_10: [],
+          // pregunta_10_otro: "",
+          // pregunta_11: [],
+          // pregunta_11_otro: "",
+          // pregunta_12: [],
+          // pregunta_12_otro: "",
+          // pregunta_13: [],
+          // pregunta_14: "",
+          // pregunta_15: "",
+          // pregunta_16: "",
+          // pregunta_16_cuantos: "",
+          // pregunta_17: "",
+          // pregunta_17_cuantos: "",
+          // pregunta_18: "",
+          // pregunta_18_cuantos: "",
+          // pregunta_19: "",
+          // pregunta_20: "",
+          // pregunta_21: "",
+          // pregunta_21_porcentaje: "",
+          // pregunta_22: "",
+          // pregunta_22_porcentaje: "",
+          // pregunta_23: "",
+          // pregunta_24: "",
+          // pregunta_25: "",
+          // pregunta_26: [],
+          // pregunta_27: "",
+          // pregunta_28_diaria: "",
+          // pregunta_28_semanal: "",
+          // pregunta_28_mensual: "",
+          // pregunta_29_yogurt_diaria: "",
+          // pregunta_29_yogurt_semanal: "",
+          // pregunta_29_yogurt_mensual: "",
+          // pregunta_29_kumis_diaria: "",
+          // pregunta_29_kumis_semanal: "",
+          // pregunta_29_kumis_mensual: "",
+          // pregunta_29_cuajada_diaria: "",
+          // pregunta_29_cuajada_semanal: "",
+          // pregunta_29_cuajada_mensual: "",
+          // pregunta_29_queso_doble_crema_diaria: "",
+          // pregunta_29_queso_doble_crema_semanal: "",
+          // pregunta_29_queso_doble_crema_mensual: "",
+          // pregunta_29_queso_campesino_diaria: "",
+          // pregunta_29_queso_campesino_semanal: "",
+          // pregunta_29_queso_campesino_mensual: "",
+          // pregunta_29_leche_diaria: "",
+          // pregunta_29_leche_semanal: "",
+          // pregunta_29_leche_mensual: "",
+          // pregunta_29_quesos_madurados_diaria: "",
+          // pregunta_29_quesos_madurados_semanal: "",
+          // pregunta_29_quesos_madurados_mensual: "",
+          // pregunta_29_requeson_diaria: "",
+          // pregunta_29_requeson_semanal: "",
+          // pregunta_29_requeson_mensual: "",
+          // pregunta_29_arequipe_diaria: "",
+          // pregunta_29_arequipe_semanal: "",
+          // pregunta_29_arequipe_mensual: "",
+          // pregunta_29_otros: "",
+          // pregunta_30: "",
+          // pregunta_31: "",
+          // pregunta_32: "",
+          // pregunta_33: "",
+          // pregunta_34: "",
+          // pregunta_35: "",
+          // pregunta_36: "",
+          // pregunta_37: "",
+          // pregunta_37_otro: "",
+          // pregunta_38: [],
+          // pregunta_38_otro: "",
+          // pregunta_39: [],
+          // pregunta_39_otro: "",
+          // pregunta_40: "",
+          // pregunta_40_cuales: "",
+          // pregunta_41: "",
+          // pregunta_42: "",
+          // pregunta_43: "",
+          // pregunta_43_cuales: "",
+          // pregunta_44: "",
+          // pregunta_44_como: "",
+          // pregunta_45: "",
+          // pregunta_45_como: "",
+          // pregunta_46: "",
+          // pregunta_47: "",
+          // pregunta_48: "",
+          // pregunta_48_cual: "",
+          // pregunta_49: [],
+          // pregunta_50: "",
+          // pregunta_51: "",
+          // pregunta_52: "",
+          // pregunta_53: "",
+          // pregunta_54: "",
+          // pregunta_55: "",
+          // pregunta_56: "",
+          // pregunta_56_cuales: "",
+          // pregunta_57: [],
+          // pregunta_57_otros: "",
+          // pregunta_58: "",
+          // pregunta_59: "",
+          // pregunta_60: [],
+          // pregunta_60_otros: "",
+          // pregunta_61: "",
+          // pregunta_62: "",
+          // pregunta_63: "",
+          // pregunta_64_energia: "",
+          // pregunta_64_gas: "",
+          // pregunta_65: "",
+          // pregunta_65_porque: "",
+          // pregunta_66_yogurt_medida: "",
+          // pregunta_66_yogurt_valor: "",
+          // pregunta_66_kumis_medida: "",
+          // pregunta_66_kumis_valor: "",
+          // pregunta_66_cuajada_medida: "",
+          // pregunta_66_cuajada_valor: "",
+          // pregunta_66_queso_doble_crema_medida: "",
+          // pregunta_66_queso_doble_crema_valor: "",
+          // pregunta_66_queso_campesino_medida: "",
+          // pregunta_66_queso_campesino_valor: "",
+          // pregunta_66_leche_medida: "",
+          // pregunta_66_leche_valor: "",
+          // pregunta_66_quesos_madurados_medida: "",
+          // pregunta_66_quesos_madurados_valor: "",
+          // pregunta_66_requeson_medida: "",
+          // pregunta_66_requeson_valor: "",
+          // pregunta_66_arequipe_medida: "",
+          // pregunta_66_arequipe_valor: "",
+          // pregunta_66_otros: "",
+          // observaciones: "",
+          // fecha: "",
+          // nombre_encuestado: "",
+          // cedula_encuestado: "",
+          // firma_encuestado: [],
+          // nombre_encuestador: "",
+          // cedula_encuestador: "",
+          // firma_encuestador: [],
+        })}
         onSubmit={handleSubmit}
       >
         <Form className="w-75">
@@ -209,10 +388,15 @@ export default function FormHome() {
               name="pregunta_1"
               className="form-select"
             >
-              <option>Respuesta...</option>
+              <option hidden>Respuesta...</option>
               <option value="Juridica">Juridica</option>
               <option value="Natural">Natural</option>
             </Field>
+            <ErrorMessage
+              name="pregunta_1"
+              component="div"
+              className="text-danger"
+            />
             <label htmlFor="organizacion" className="form-label">
               <b>2. Tipo de organizacion:</b>
             </label>
@@ -222,11 +406,16 @@ export default function FormHome() {
               name="pregunta_2"
               className="form-select"
             >
-              <option>Respuesta...</option>
+              <option hidden>Respuesta...</option>
               <option value="Cooperativa">Cooperativa</option>
               <option value="Asociacion">Asociacion</option>
               <option value="SAS">SAS</option>
             </Field>
+            <ErrorMessage
+              name="pregunta_2"
+              component="div"
+              className="text-danger"
+            />
             <label htmlFor="pregunta_2_otro" className="form-label">
               Otro:
             </label>
@@ -235,6 +424,11 @@ export default function FormHome() {
               name="pregunta_2_otro"
               placeholder="Respuesta..."
               className="form-control form-control-sm w-25"
+            />
+            <ErrorMessage
+              name="pregunta_2_otro"
+              component="div"
+              className="text-danger"
             />
             <label htmlFor="pregunta_3" className="form-label">
               <b>3. Su organización cuenta con:</b>
@@ -296,11 +490,19 @@ export default function FormHome() {
             <label htmlFor="pregunta_5" className="form-label">
               <b>5. Información de Contacto:</b>
             </label>
+            <label htmlFor="pregunta_5_numero">Numero:</label>
+            <Field
+              type="number"
+              name="pregunta_5_numero"
+              placeholder="Respuesta..."
+              className="form-control form-control-sm w-25"
+            />
+            <label htmlFor="pregunta_5_correo">Correo:</label>
             <Field
               type="text"
-              name="pregunta_5"
+              name="pregunta_5_correo"
               placeholder="Respuesta..."
-              className="form-control"
+              className="form-control form-control-sm w-25"
             />
             <label htmlFor="pregunta_6" className="form-label">
               <b>6. Actividad principal:</b>
@@ -321,11 +523,16 @@ export default function FormHome() {
               <b>7. Municipio:</b>
             </label>
             <Field
-              type="text"
+              component="select"
+              id="pregunta_7"
               name="pregunta_7"
-              placeholder="Respuesta..."
-              className="form-control"
-            />
+              className="form-select"
+            >
+              <option>Respuesta</option>
+              {municipio.map((el: string) => (
+                <option value={el}>{el}</option>
+              ))}
+            </Field>
             <label htmlFor="pregunta_8" className="form-label">
               <b>8. ¿realiza el aporte al fondo nacional del ganado?</b>
             </label>
@@ -542,7 +749,7 @@ export default function FormHome() {
               <b>14. ¿Cuantos Proveedores de leche tiene?</b>
             </label>
             <Field
-              type="text"
+              type="number"
               name="pregunta_14"
               placeholder="Respuesta..."
               className="form-control"
@@ -578,12 +785,11 @@ export default function FormHome() {
             </Field>
             <label htmlFor="regunta_16_cuantos">Cuantos</label>
             <Field
-              type="text"
+              type="number"
               name="pregunta_16_cuantos"
               placeholder="Respuesta..."
               className="form-control form-control-sm w-25"
             />
-
             <label htmlFor="pregunta_17" className="form-label">
               <b>
                 17. ¿Si su proveedor es un centro de acopio, cuentan con
@@ -603,12 +809,11 @@ export default function FormHome() {
             </Field>
             <label htmlFor="regunta_17_cuantos">Cuantos</label>
             <Field
-              type="text"
+              type="number"
               name="pregunta_17_cuantos"
               placeholder="Respuesta..."
               className="form-control form-control-sm w-25"
             />
-
             <label htmlFor="pregunta_18" className="form-label">
               <b>
                 18 ¿Sus proveedores cuentan con certificado de Buenas Prácticas
@@ -628,7 +833,7 @@ export default function FormHome() {
             </Field>
             <label htmlFor="regunta_18_cuantos">Cuantos</label>
             <Field
-              type="text"
+              type="number"
               name="pregunta_18_cuantos"
               placeholder="Respuesta..."
               className="form-control form-control-sm w-25"
@@ -673,62 +878,188 @@ export default function FormHome() {
                 el transporte de leche a la planta
               </b>
             </label>
-            <Field
-              component="select"
-              name="pregunta_21"
-              id="pregunta_21"
-              className="form-select"
-            >
-              <option>Respuesta</option>
-              <option value="Pavimentada">Pavimentada</option>
-              <option value="Placa huella">Placa huella</option>
-              <option value="Via carreteable">
-                Via carreteable (destapada)
-              </option>
-              <option value="Trocha - a pie">Trocha - a pie</option>
-            </Field>
-            <label
-              htmlFor="pregunta_21_porcentaje"
-              className="form-label"
-            ></label>
-            Porcentaje:
-            <Field
-              type="text"
-              name="pregunta_21_porcentaje"
-              placeholder="Respuesta..."
-              className="form-control form-control-sm w-25"
-            />
+            <div>
+              <label htmlFor="pregunta_21" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_21"
+                  value="Pavimentada"
+                  className="form-check-input"
+                />{" "}
+                <b>Pavimentada</b>
+              </label>
+              <label
+                htmlFor="pregunta_21_porcentaje_pavimentada"
+                className="form-label ms-2"
+              >
+                <Field
+                  type="number"
+                  name="pregunta_21_porcentaje_pavimentada"
+                  placeholder="Porcentaje..."
+                  className="form-control form-control-sm"
+                />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="pregunta_21" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_21"
+                  value="Placa huella"
+                  className="form-check-input"
+                />{" "}
+                <b>Placa huella</b>
+              </label>
+              <label
+                htmlFor="pregunta_21_porcentaje_placa_huella"
+                className="form-label ms-2"
+              >
+                <Field
+                  type="number"
+                  name="pregunta_21_porcentaje_placa_huella"
+                  placeholder="Porcentaje..."
+                  className="form-control form-control-sm"
+                />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="pregunta_21" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_21"
+                  value="Via carreteable"
+                  className="form-check-input"
+                />{" "}
+                <b>Via carreteable (destapada)</b>
+              </label>
+              <label
+                htmlFor="pregunta_21_porcentaje_via_carreteable"
+                className="form-label ms-2"
+              >
+                <Field
+                  type="number"
+                  name="pregunta_21_porcentaje_via_carreteable"
+                  placeholder="Porcentaje..."
+                  className="form-control form-control-sm"
+                />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="pregunta_21" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_22"
+                  value="Trocha - a pie"
+                  className="form-check-input"
+                />{" "}
+                <b>Trocha - a pie</b>
+              </label>
+              <label
+                htmlFor="pregunta_21_porcentaje_trocha_a_pie"
+                className="form-label ms-2"
+              >
+                <Field
+                  type="number"
+                  name="pregunta_21_porcentaje_trocha_a_pie"
+                  placeholder="Porcentaje..."
+                  className="form-control form-control-sm"
+                />
+              </label>
+            </div>
             <label htmlFor="pregunta_22" className="form-label">
               <b>
                 22. En lo que respecta a vías, que tipo de acceso predomina para
                 comercializar sus productos
               </b>
             </label>
-            <Field
-              component="select"
-              name="pregunta_22"
-              id="pregunta_22"
-              className="form-select"
-            >
-              <option>Respuesta</option>
-              <option value="Pavimentada">Pavimentada</option>
-              <option value="Placa huella">Placa huella</option>
-              <option value="Via carreteable">
-                Via carreteable (destapada)
-              </option>
-              <option value="Trocha - a pie">Trocha - a pie</option>
-            </Field>
-            <label
-              htmlFor="pregunta_22_porcentaje"
-              className="form-label"
-            ></label>
-            Porcentaje:
-            <Field
-              type="text"
-              name="pregunta_22_porcentaje"
-              placeholder="Respuesta..."
-              className="form-control form-control-sm w-25"
-            />
+            <div>
+              <label htmlFor="pregunta_22" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_22"
+                  value="Pavimentada"
+                  className="form-check-input"
+                />{" "}
+                <b>Pavimentada</b>
+              </label>
+              <label
+                htmlFor="pregunta_22_porcentaje_pavimentada"
+                className="form-label ms-2"
+              >
+                <Field
+                  type="number"
+                  name="pregunta_22_porcentaje_pavimentada"
+                  placeholder="Porcentaje..."
+                  className="form-control form-control-sm"
+                />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="pregunta_22" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_22"
+                  value="Placa huella"
+                  className="form-check-input"
+                />{" "}
+                <b>Placa huella</b>
+              </label>
+              <label
+                htmlFor="pregunta_22_porcentaje_placa_huella"
+                className="form-label ms-2"
+              >
+                <Field
+                  type="number"
+                  name="pregunta_22_porcentaje_placa_huella"
+                  placeholder="Porcentaje..."
+                  className="form-control form-control-sm"
+                />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="pregunta_22" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_22"
+                  value="Via carreteable"
+                  className="form-check-input"
+                />{" "}
+                <b>Via carreteable (destapada)</b>
+              </label>
+              <label
+                htmlFor="pregunta_22_porcentaje_via_carreteable"
+                className="form-label ms-2"
+              >
+                <Field
+                  type="number"
+                  name="pregunta_22_porcentaje_via_carreteable"
+                  placeholder="Porcentaje..."
+                  className="form-control form-control-sm"
+                />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="pregunta_22" className="form-label">
+                <Field
+                  type="checkbox"
+                  name="pregunta_22"
+                  value="Trocha - a pie"
+                  className="form-check-input"
+                />{" "}
+                <b>Trocha - a pie</b>
+              </label>
+              <label
+                htmlFor="pregunta_22_porcentaje_trocha_a_pie"
+                className="form-label ms-2"
+              >
+                <Field
+                  type="number"
+                  name="pregunta_22_porcentaje_trocha_a_pie"
+                  placeholder="Porcentaje..."
+                  className="form-control form-control-sm"
+                />
+              </label>
+            </div>
             <label htmlFor="pregunta_23" className="form-label">
               <b>
                 23. ¿Cuál es la temperatura ambiente aprox. donde se ubica la
@@ -736,7 +1067,7 @@ export default function FormHome() {
               </b>
             </label>
             <Field
-              type="text"
+              type="number"
               name="pregunta_23"
               placeholder="Respuesta..."
               className="form-control"
@@ -748,7 +1079,7 @@ export default function FormHome() {
               </b>
             </label>
             <Field
-              type="text"
+              type="nunumber"
               name="pregunta_24"
               placeholder="Respuesta..."
               className="form-control"
@@ -878,7 +1209,7 @@ export default function FormHome() {
                   Diaria
                 </label>
                 <Field
-                  type="text"
+                  type="number"
                   name="pregunta_28_diaria"
                   placeholder="Respuesta..."
                   className="form-control form-control-sm w-25"
@@ -889,7 +1220,7 @@ export default function FormHome() {
                   Semanal{" "}
                 </label>
                 <Field
-                  type="text"
+                  type="number"
                   name="pregunta_28_semanal"
                   placeholder="Respuesta..."
                   className="form-control form-control-sm w-25"
@@ -900,7 +1231,7 @@ export default function FormHome() {
                   Mensual{" "}
                 </label>
                 <Field
-                  type="text"
+                  type="number"
                   name="pregunta_28_mensual"
                   placeholder="Respuesta..."
                   className="form-control form-control-sm w-25"
@@ -927,7 +1258,7 @@ export default function FormHome() {
                       Diaria
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_yogurt_diaria"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -941,7 +1272,7 @@ export default function FormHome() {
                       Semanal
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_yogurt_semanal"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -955,7 +1286,7 @@ export default function FormHome() {
                       Mensual
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_yogurt_mensual"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -976,7 +1307,7 @@ export default function FormHome() {
                       Diaria
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_kumis_diaria"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -990,7 +1321,7 @@ export default function FormHome() {
                       Semanal
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_kumis_semanal"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1004,7 +1335,7 @@ export default function FormHome() {
                       Mensual
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_kumis_mensual"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1025,7 +1356,7 @@ export default function FormHome() {
                       Diaria
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_cuajada_diaria"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1039,7 +1370,7 @@ export default function FormHome() {
                       Semanal
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_cuajada_semanal"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1053,7 +1384,7 @@ export default function FormHome() {
                       Mensual
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_cuajada_mensual"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1074,7 +1405,7 @@ export default function FormHome() {
                       Diaria
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_queso_doble_crema_diaria"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1088,7 +1419,7 @@ export default function FormHome() {
                       Semanal
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_queso_doble_crema_semanal"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1102,7 +1433,7 @@ export default function FormHome() {
                       Mensual
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_queso_doble_crema_mensual"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1123,7 +1454,7 @@ export default function FormHome() {
                       Diaria
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_queso_campesino_diaria"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1137,7 +1468,7 @@ export default function FormHome() {
                       Semanal
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_queso_campesino_semanal"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1151,7 +1482,7 @@ export default function FormHome() {
                       Mensual
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_queso_campesino_mensual"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1172,7 +1503,7 @@ export default function FormHome() {
                       Diaria
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_leche_diaria"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1186,7 +1517,7 @@ export default function FormHome() {
                       Semanal
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_leche_semanal"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1200,7 +1531,7 @@ export default function FormHome() {
                       Mensual
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_leche_mensual"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1221,7 +1552,7 @@ export default function FormHome() {
                       Diaria
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_quesos_madurados_diaria"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1235,7 +1566,7 @@ export default function FormHome() {
                       Semanal
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_quesos_madurados_semanal"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1249,7 +1580,7 @@ export default function FormHome() {
                       Mensual
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_quesos_madurados_mensual"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1270,7 +1601,7 @@ export default function FormHome() {
                       Diaria
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_requeson_diaria"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1284,7 +1615,7 @@ export default function FormHome() {
                       Semanal
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_requeson_semanal"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1298,7 +1629,7 @@ export default function FormHome() {
                       Mensual{" "}
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_requeson_mensual"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1319,7 +1650,7 @@ export default function FormHome() {
                       Diaria
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_arequipe_diaria"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1333,7 +1664,7 @@ export default function FormHome() {
                       Semanal
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_arequipe_semanal"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1347,7 +1678,7 @@ export default function FormHome() {
                       Mensual
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_29_arequipe_mensual"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -1380,7 +1711,7 @@ export default function FormHome() {
               <b>30. ¿Cuantos años de experiencia tiene en el sector lácteo?</b>
             </label>
             <Field
-              type="text"
+              type="number"
               name="pregunta_30"
               placeholder="Respuesta..."
               className="form-control"
@@ -1392,7 +1723,7 @@ export default function FormHome() {
               </b>
             </label>
             <Field
-              type="text"
+              type="number"
               name="pregunta_31"
               placeholder="Respuesta..."
               className="form-control"
@@ -1404,7 +1735,7 @@ export default function FormHome() {
               </b>
             </label>
             <Field
-              type="text"
+              type="number"
               name="pregunta_32"
               placeholder="Respuesta..."
               className="form-control"
@@ -1417,7 +1748,7 @@ export default function FormHome() {
               </b>
             </label>
             <Field
-              type="text"
+              type="number"
               name="pregunta_33"
               placeholder="Respuesta..."
               className="form-control"
@@ -2201,7 +2532,7 @@ export default function FormHome() {
               </b>
             </label>
             <Field
-              type="text"
+              type="number"
               name="pregunta_58"
               placeholder="Respuesta..."
               className="form-control"
@@ -2333,7 +2664,7 @@ export default function FormHome() {
               Energia:
             </label>
             <Field
-              type="text"
+              type="number"
               name="pregunta_64_energia"
               placeholder="Respuesta..."
               className="form-control form-control-sm w-25"
@@ -2342,7 +2673,7 @@ export default function FormHome() {
               Gas:
             </label>
             <Field
-              type="text"
+              type="number"
               name="pregunta_64_gas"
               placeholder="Respuesta..."
               className="form-control form-control-sm w-25"
@@ -2404,7 +2735,7 @@ export default function FormHome() {
                       Valor
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_66_yogurt_valor"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -2439,7 +2770,7 @@ export default function FormHome() {
                       Valor
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_66_kumis_valor"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -2474,7 +2805,7 @@ export default function FormHome() {
                       Valor
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_66_cuajada_valor"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -2509,7 +2840,7 @@ export default function FormHome() {
                       Valor
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_66_queso_doble_crema_valor"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -2544,7 +2875,7 @@ export default function FormHome() {
                       Valor
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_66_queso_campesino_valor"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -2579,7 +2910,7 @@ export default function FormHome() {
                       Valor
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_66_leche_valor"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -2614,7 +2945,7 @@ export default function FormHome() {
                       Valor
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_66_quesos_madurados_valor"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -2649,7 +2980,7 @@ export default function FormHome() {
                       Valor
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_66_requeson_valor"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -2684,7 +3015,7 @@ export default function FormHome() {
                       Valor
                     </label>
                     <Field
-                      type="text"
+                      type="number"
                       name="pregunta_66_arequipe_valor"
                       placeholder="Respuesta..."
                       className="form-control form-control-sm w-25"
@@ -2709,7 +3040,7 @@ export default function FormHome() {
             className="container_form"
             style={{ backgroundColor: "#c3f8ff" }}
           >
-            <div className="container_observations_form">
+            <div className="container_observations_form w-100">
               <div>
                 <label htmlFor="observaciones" className="form-label">
                   <b>Observaciones</b>
@@ -2723,12 +3054,7 @@ export default function FormHome() {
                 <label htmlFor="fecha" className="form-label">
                   <b>Fecha</b>
                 </label>
-                <Field
-                  type="text"
-                  name="fecha"
-                  placeholder="Respuesta..."
-                  className="form-control"
-                />
+                <Field type="date" name="fecha" className="form-control" />
               </div>
             </div>
             <div className="container_data_form">

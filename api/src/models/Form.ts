@@ -25,7 +25,10 @@ export const Form = sequelize.define(
     pregunta_4: {
       type: DataTypes.STRING,
     },
-    pregunta_5: {
+    pregunta_5_numero: {
+      type: DataTypes.STRING,
+    },
+    pregunta_5_correo: {
       type: DataTypes.STRING,
     },
     pregunta_6: {
@@ -95,15 +98,33 @@ export const Form = sequelize.define(
       type: DataTypes.STRING,
     },
     pregunta_21: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+    },
+    pregunta_21_porcentaje_pavimentada: {
       type: DataTypes.STRING,
     },
-    pregunta_21_porcentaje: {
+    pregunta_21_porcentaje_placa_huella: {
+      type: DataTypes.STRING,
+    },
+    pregunta_21_porcentaje_via_carreteable: {
+      type: DataTypes.STRING,
+    },
+    pregunta_21_porcentaje_trocha_a_pie: {
       type: DataTypes.STRING,
     },
     pregunta_22: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+    },
+    pregunta_22_porcentaje_pavimentada: {
       type: DataTypes.STRING,
     },
-    pregunta_22_porcentaje: {
+    pregunta_22_porcentaje_placa_huella: {
+      type: DataTypes.STRING,
+    },
+    pregunta_22_porcentaje_via_carreteable: {
+      type: DataTypes.STRING,
+    },
+    pregunta_22_porcentaje_trocha_a_pie: {
       type: DataTypes.STRING,
     },
     pregunta_23: {

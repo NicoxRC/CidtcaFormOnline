@@ -32,7 +32,7 @@ export default function NavBar() {
         </ul>
       </div>
       <div>
-        <img src="logo.jpg" alt="logo" />
+        <img src="https://cidtca.com/wp-content/uploads/2021/11/CIDTCA-VBN2@4x-300x287.png" alt="logo" />
       </div>
       <Link to={"/crear"}>
         <button type="button" className="btn btn-outline-success me-2">

@@ -25,7 +25,10 @@ exports.Form = database_1.sequelize.define("forms", {
     pregunta_4: {
         type: sequelize_1.DataTypes.STRING,
     },
-    pregunta_5: {
+    pregunta_5_numero: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    pregunta_5_correo: {
         type: sequelize_1.DataTypes.STRING,
     },
     pregunta_6: {
@@ -95,15 +98,33 @@ exports.Form = database_1.sequelize.define("forms", {
         type: sequelize_1.DataTypes.STRING,
     },
     pregunta_21: {
+        type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
+    },
+    pregunta_21_porcentaje_pavimentada: {
         type: sequelize_1.DataTypes.STRING,
     },
-    pregunta_21_porcentaje: {
+    pregunta_21_porcentaje_placa_huella: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    pregunta_21_porcentaje_via_carreteable: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    pregunta_21_porcentaje_trocha_a_pie: {
         type: sequelize_1.DataTypes.STRING,
     },
     pregunta_22: {
+        type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
+    },
+    pregunta_22_porcentaje_pavimentada: {
         type: sequelize_1.DataTypes.STRING,
     },
-    pregunta_22_porcentaje: {
+    pregunta_22_porcentaje_placa_huella: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    pregunta_22_porcentaje_via_carreteable: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    pregunta_22_porcentaje_trocha_a_pie: {
         type: sequelize_1.DataTypes.STRING,
     },
     pregunta_23: {
